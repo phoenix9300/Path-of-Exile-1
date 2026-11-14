@@ -1,0 +1,811 @@
+#===============================================================================
+# Profane Apothecary Pathfinder - item filter  v1.0
+# For Path of Exile 3.30 (Covens of Umbra). Written for one character: Poisonous Concoction
+# through the campaign, then Marohi Erqi slams (see the build guide).
+#
+# INSTALL
+#   1) Put this file in:  %USERPROFILE%\Documents\My Games\Path of Exile
+#   2) In game: Escape -> Options -> Game -> Filters, pick "profane-apothecary".
+#   3) After editing the file, press the reload button next to that list.
+#
+# IF THE GAME REFUSES TO LOAD IT
+#   The message names a line number. Every block below stands alone, so delete
+#   the block that line belongs to (from its Show/Hide line to the next blank
+#   line), save and reload.
+#
+# HOW IT IS BUILT
+#   The first block that matches an item decides how it looks. Nothing at the
+#   end hides "everything else": an item no block matches is shown the way the
+#   game shows it without a filter. Only these are ever hidden:
+#     - outgrown life and mana flasks, and flasks or tinctures the build has no slot for
+#     - normal and magic weapons, quivers, armour and shields from area level 14
+#     - normal and magic rings, amulets and belts in maps
+#     - rare weapons, quivers, shields and off-build armour from tier 11 maps
+#   Uniques, currency, maps, fragments, cards, gems and jewels are never hidden.
+#   Hold the highlight key (Alt) with Always Highlight on to see hidden items.
+#
+# PINK means "for this build". The guide's Loot filter section lists every colour.
+# Generated 2026-11-14 by mkfilter.py. Not affiliated with Grinding Gear Games.
+#===============================================================================
+
+#-------------------------------------------------------------------------------
+# THINGS THAT ARE SHOWN EVERYWHERE
+# These come first, so no later rule can hide them.
+#-------------------------------------------------------------------------------
+
+Show # sixlink: Any six-linked item
+	LinkedSockets 6
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 255 255
+	SetBackgroundColor 190 20 30 255
+	PlayAlertSound 6 300
+	MinimapIcon 0 Red Star
+	PlayEffect Red
+
+Show # build_unique: A unique on one of the four bases the build wears: Karui Maul, Stibnite Flask, Carnal Mitts, Triumphant Lamellar
+	Rarity Unique
+	BaseType == "Karui Maul" "Stibnite Flask" "Carnal Mitts" "Triumphant Lamellar"
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 90 200
+	SetBackgroundColor 150 20 110 255
+	PlayAlertSound 1 300
+	MinimapIcon 0 Pink Star
+	PlayEffect Pink
+
+Show # unique: Every other unique
+	Rarity Unique
+	SetFontSize 40
+	SetTextColor 175 96 37
+	SetBorderColor 175 96 37
+	SetBackgroundColor 25 14 5 245
+	PlayAlertSound 3 200
+	MinimapIcon 1 Brown Star
+	PlayEffect Brown Temp
+
+Show # fated: Items carrying the Fated flag
+	Fated True
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # influenced: Influenced items
+	HasInfluence Shaper Elder Crusader Hunter Redeemer Warlord
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # fractured: Fractured items
+	FracturedItem True
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # synthesised: Synthesised items
+	SynthesisedItem True
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # memory: Items with Memory Strands
+	MemoryStrands >= 1
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # enchanted: Enchanted equipment
+	AnyEnchantment True
+	Class == "Bows" "Claws" "Daggers" "Rune Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Thrusting One Hand Swords" "Sceptres" "Staves" "Warstaves" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Helmets" "Body Armours" "Gloves" "Boots" "Shields" "Quivers" "Amulets" "Rings" "Belts"
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # tier45: Unidentified magic and rare items of item tier 4 or 5
+	UnidentifiedItemTier >= 4
+	SetFontSize 40
+	SetTextColor 255 235 160
+	SetBorderColor 255 150 40
+	SetBackgroundColor 65 32 0 245
+	MinimapIcon 1 Orange Pentagon
+	PlayEffect Orange Temp
+
+Show # sixsocket: Six sockets
+	Sockets >= 6
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 150 150 150
+	SetBackgroundColor 30 30 30 225
+
+#-------------------------------------------------------------------------------
+# CURRENCY
+# Tiers follow long-run rarity, not live prices. Nothing in the currency tab is hidden.
+#-------------------------------------------------------------------------------
+
+Show # cur_top: Mirror, Divine Orb and the other rarest orbs
+	BaseType == "Mirror of Kalandra" "Mirror Shard" "Divine Orb" "Hinekora's Lock" "Fracturing Orb" "Sacred Orb" "Awakener's Orb" "Tainted Divine Teardrop"
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 255 255
+	SetBackgroundColor 190 20 30 255
+	PlayAlertSound 6 300
+	MinimapIcon 0 Red Star
+	PlayEffect Red
+
+Show # cur_build: Orb of Regret and Instilling Orb
+	BaseType == "Orb of Regret" "Instilling Orb"
+	SetFontSize 40
+	SetTextColor 235 200 110
+	SetBorderColor 255 90 200
+	SetBackgroundColor 45 32 10 250
+	MinimapIcon 1 Pink Circle
+
+Show # cur_high: Exalted Orb, Orb of Annulment, Ancient Orb, Stacked Deck
+	BaseType == "Exalted Orb" "Orb of Annulment" "Ancient Orb" "Stacked Deck"
+	SetFontSize 42
+	SetTextColor 30 20 0
+	SetBorderColor 255 245 200
+	SetBackgroundColor 235 200 110 255
+	PlayAlertSound 5 300
+	MinimapIcon 0 Yellow Circle
+	PlayEffect Yellow
+
+Show # cur_mid: Chaos, Alchemy, Vaal, Fusing, Jeweller's, Chromatic and the other orbs you spend daily
+	BaseType == "Chaos Orb" "Vaal Orb" "Orb of Alchemy" "Orb of Scouring" "Orb of Fusing" "Jeweller's Orb" "Chromatic Orb" "Regal Orb" "Blessed Orb" "Gemcutter's Prism" "Glassblower's Bauble" "Enkindling Orb" "Orb of Unmaking" "Orb of Chance" "Orb of Alteration" "Frayed Thread"
+	SetFontSize 38
+	SetTextColor 235 200 110
+	SetBorderColor 235 200 110
+	SetBackgroundColor 45 32 10 245
+	MinimapIcon 2 Yellow Circle
+
+Show # cur_low_maps: Scrolls, Transmutation, Augmentation, Scraps and Whetstones in maps
+	BaseType == "Scroll of Wisdom" "Portal Scroll" "Orb of Transmutation" "Orb of Augmentation" "Armourer's Scrap" "Blacksmith's Whetstone"
+	AreaLevel >= 68
+	SetFontSize 28
+	SetTextColor 170 158 130 220
+	SetBackgroundColor 15 15 10 180
+
+Show # cur_any: All other stackable currency
+	Class == "Stackable Currency" "Delve Stackable Socketable Currency"
+	SetFontSize 34
+	SetTextColor 200 180 130
+	SetBorderColor 120 100 60
+	SetBackgroundColor 25 20 10 230
+
+#-------------------------------------------------------------------------------
+# MAPS, FRAGMENTS, CARDS AND QUEST ITEMS
+# Nothing here is hidden.
+#-------------------------------------------------------------------------------
+
+Show # quest: Quest and Labyrinth items
+	Class == "Quest Items" "Labyrinth Items" "Pantheon Souls"
+	SetFontSize 40
+	SetTextColor 74 230 58
+	SetBorderColor 74 230 58
+	SetBackgroundColor 10 35 8 245
+	MinimapIcon 1 Green Hexagon
+	PlayEffect Green
+
+Show # map_red: Maps of tier 11 and up
+	Class == "Maps"
+	MapTier >= 11
+	SetFontSize 42
+	SetTextColor 255 255 255
+	SetBorderColor 230 70 70
+	SetBackgroundColor 75 12 12 250
+	PlayAlertSound 7 200
+	MinimapIcon 1 Red Square
+	PlayEffect Red Temp
+
+Show # map_yellow: Maps of tier 6 to 10
+	Class == "Maps"
+	MapTier >= 6
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 230 200 60
+	SetBackgroundColor 55 48 6 245
+	MinimapIcon 2 Yellow Square
+
+Show # map_white: Maps of tier 1 to 5
+	Class == "Maps"
+	SetFontSize 36
+	SetTextColor 255 255 255
+	SetBorderColor 210 210 210
+	SetBackgroundColor 35 35 35 240
+	MinimapIcon 2 White Square
+
+Show # fragments: Map fragments, including the Threads that replaced scarabs in 3.30
+	Class == "Map Fragments" "Misc Map Items" "Vault Keys"
+	SetFontSize 38
+	SetTextColor 205 215 255
+	SetBorderColor 110 130 255
+	SetBackgroundColor 20 26 75 245
+	MinimapIcon 2 Blue Hexagon
+
+Show # div: Divination cards
+	Class == "Divination Cards"
+	SetFontSize 38
+	SetTextColor 0 40 70
+	SetBorderColor 230 245 255
+	SetBackgroundColor 160 215 240 255
+	MinimapIcon 2 Blue Square
+
+Show # league: League items: contracts, blueprints, Viscera from the Covens of Umbra bosses and similar
+	Class == "Incursion Items" "Contracts" "Blueprints" "Sanctum Research" "Relics" "Wombgifts" "Viscera" "Pieces" "Heist Targets" "Trinkets"
+	SetFontSize 38
+	SetTextColor 205 215 255
+	SetBorderColor 110 130 255
+	SetBackgroundColor 20 26 75 245
+	MinimapIcon 2 Blue Hexagon
+
+#-------------------------------------------------------------------------------
+# GEMS
+# Gems are never hidden. The campaign gems all come from quest rewards and vendors, so a dropped gem matters only for its quality.
+#-------------------------------------------------------------------------------
+
+Show # gem_top: Awakened gems, Enlighten, Empower, Enhance
+	Class == "Skill Gems" "Support Gems"
+	BaseType "Awakened" "Enlighten" "Empower" "Enhance"
+	SetFontSize 42
+	SetTextColor 255 255 255
+	SetBorderColor 27 162 155
+	SetBackgroundColor 10 75 72 250
+	PlayAlertSound 5 200
+	MinimapIcon 1 Cyan Triangle
+	PlayEffect Cyan Temp
+
+Show # gem_transfigured: Transfigured gems
+	TransfiguredGem True
+	SetFontSize 38
+	SetTextColor 27 200 190
+	SetBorderColor 27 162 155
+	SetBackgroundColor 6 35 34 240
+	MinimapIcon 2 Cyan Triangle
+
+Show # gem_quality: Gems with 14% quality or more
+	Class == "Skill Gems" "Support Gems"
+	Quality >= 14
+	SetFontSize 38
+	SetTextColor 27 200 190
+	SetBorderColor 27 162 155
+	SetBackgroundColor 6 35 34 240
+	MinimapIcon 2 Cyan Triangle
+
+Show # gem_campaign: Any gem during the campaign
+	Class == "Skill Gems" "Support Gems"
+	AreaLevel <= 67
+	SetFontSize 34
+	SetTextColor 27 162 155
+	SetBorderColor 20 100 96
+	SetBackgroundColor 5 22 21 225
+
+Show # gem_maps: Plain gems in maps
+	Class == "Skill Gems" "Support Gems"
+	SetFontSize 27
+	SetTextColor 27 162 155 200
+	SetBackgroundColor 0 0 0 150
+
+#-------------------------------------------------------------------------------
+# FLASKS AND TINCTURES
+# The build is a Pathfinder: the five belt slots are fixed at each checkpoint, and Poisonous Concoction hits harder with a bigger life flask.
+#-------------------------------------------------------------------------------
+
+Show # flask_quick_camp: Quicksilver Flask during the campaign
+	BaseType == "Quicksilver Flask"
+	AreaLevel <= 67
+	SetFontSize 38
+	SetTextColor 255 190 235
+	SetBorderColor 225 80 180
+	SetBackgroundColor 50 12 40 240
+	MinimapIcon 2 Pink Circle
+
+Show # flask_jade_camp: Jade Flask during the campaign
+	BaseType == "Jade Flask"
+	AreaLevel <= 67
+	SetFontSize 38
+	SetTextColor 255 190 235
+	SetBorderColor 225 80 180
+	SetBackgroundColor 50 12 40 240
+	MinimapIcon 2 Pink Circle
+
+Show # flask_end_top: Amethyst, Diamond or Sulphur Flask of item level 84 or more
+	BaseType == "Amethyst Flask" "Diamond Flask" "Sulphur Flask"
+	ItemLevel >= 84
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # flask_end: Amethyst, Diamond or Sulphur Flask of any item level
+	BaseType == "Amethyst Flask" "Diamond Flask" "Sulphur Flask"
+	SetFontSize 38
+	SetTextColor 255 190 235
+	SetBorderColor 225 80 180
+	SetBackgroundColor 50 12 40 240
+	MinimapIcon 2 Pink Circle
+
+Show # flask_quick_end: Quicksilver Flask in maps
+	BaseType == "Quicksilver Flask"
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # tincture_top: Oakbranch or Rosethorn Tincture of item level 85 or more
+	BaseType == "Oakbranch Tincture" "Rosethorn Tincture"
+	ItemLevel >= 85
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # tincture: Oakbranch or Rosethorn Tincture of any item level
+	BaseType == "Oakbranch Tincture" "Rosethorn Tincture"
+	SetFontSize 38
+	SetTextColor 255 190 235
+	SetBorderColor 225 80 180
+	SetBackgroundColor 50 12 40 240
+	MinimapIcon 2 Pink Circle
+
+Hide # tincture_other_hide: Other tinctures in maps
+	Class == "Tinctures"
+	Rarity Normal Magic
+	AreaLevel >= 68
+
+Show # tincture_other: Other tinctures during the campaign
+	Class == "Tinctures"
+	SetFontSize 33
+	SetTextColor 190 230 190
+	SetBorderColor 70 140 85
+	SetBackgroundColor 10 30 15 225
+
+Hide # life_skip_sanctified: Sanctified Life Flasks
+	Class == "Life Flasks"
+	DropLevel >= 50
+	DropLevel < 60
+
+Hide # life_skip_eternal: Eternal Life Flasks
+	Class == "Life Flasks"
+	DropLevel >= 65
+
+Hide # life_old_10: Life flasks below drop level 6 from area level 10
+	Class == "Life Flasks"
+	AreaLevel >= 10
+	DropLevel < 6
+
+Hide # life_old_16: Life flasks below drop level 12 from area level 16
+	Class == "Life Flasks"
+	AreaLevel >= 16
+	DropLevel < 12
+
+Hide # life_old_22: Life flasks below drop level 18 from area level 22
+	Class == "Life Flasks"
+	AreaLevel >= 22
+	DropLevel < 18
+
+Hide # life_old_28: Life flasks below drop level 24 from area level 28
+	Class == "Life Flasks"
+	AreaLevel >= 28
+	DropLevel < 24
+
+Hide # life_old_34: Life flasks below drop level 30 from area level 34
+	Class == "Life Flasks"
+	AreaLevel >= 34
+	DropLevel < 30
+
+Hide # life_old_40: Life flasks below drop level 36 from area level 40
+	Class == "Life Flasks"
+	AreaLevel >= 40
+	DropLevel < 36
+
+Hide # life_old_46: Life flasks below drop level 42 from area level 46
+	Class == "Life Flasks"
+	AreaLevel >= 46
+	DropLevel < 42
+
+Hide # life_old_64: Life flasks below drop level 60 from area level 64
+	Class == "Life Flasks"
+	AreaLevel >= 64
+	DropLevel < 60
+
+Hide # life_red_hide: All life flasks from tier 11 maps
+	Class == "Life Flasks"
+	AreaLevel >= 78
+
+Show # life_maps: Divine Life Flasks in early maps
+	Class == "Life Flasks"
+	AreaLevel >= 68
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # life_build: Life flasks in the sizes the leveling route uses: Grand, Giant, Colossal, Sacred, Hallowed, Divine
+	Class == "Life Flasks"
+	DropLevel >= 18
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # life_early: Small to Greater Life Flasks in Act 1 and 2
+	Class == "Life Flasks"
+	SetFontSize 33
+	SetTextColor 190 230 190
+	SetBorderColor 70 140 85
+	SetBackgroundColor 10 30 15 225
+
+Hide # mana_hide: Mana flasks from Act 5
+	Class == "Mana Flasks"
+	AreaLevel >= 41
+
+Hide # mana_old_16: Mana flasks below drop level 12 from area level 16
+	Class == "Mana Flasks"
+	AreaLevel >= 16
+	DropLevel < 12
+
+Hide # mana_old_28: Mana flasks below drop level 24 from area level 28
+	Class == "Mana Flasks"
+	AreaLevel >= 28
+	DropLevel < 24
+
+Show # mana: Mana flasks in Acts 1 to 4
+	Class == "Mana Flasks"
+	SetFontSize 33
+	SetTextColor 190 230 190
+	SetBorderColor 70 140 85
+	SetBackgroundColor 10 30 15 225
+
+Hide # hybrid_hide: Hybrid flasks after Act 1
+	Class == "Hybrid Flasks"
+	AreaLevel >= 14
+
+Hide # utility_hide: Other utility flasks in maps
+	Class == "Utility Flasks"
+	Rarity Normal Magic
+	AreaLevel >= 68
+
+Show # utility: Other utility flasks during the campaign
+	Class == "Utility Flasks"
+	SetFontSize 33
+	SetTextColor 190 230 190
+	SetBorderColor 70 140 85
+	SetBackgroundColor 10 30 15 225
+
+#-------------------------------------------------------------------------------
+# JEWELS
+# The tree has five jewel sockets at Stage 1 and six from Stage 2.
+#-------------------------------------------------------------------------------
+
+Show # jewel_cluster: Cluster jewels
+	Class == "Jewels"
+	BaseType "Cluster Jewel"
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # jewel_rare: Rare jewels
+	Class == "Jewels" "Abyss Jewels"
+	Rarity Rare
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # jewel: Magic jewels
+	Class == "Jewels" "Abyss Jewels"
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+#-------------------------------------------------------------------------------
+# RINGS, AMULETS AND BELTS
+#-------------------------------------------------------------------------------
+
+Show # jw_gated: Jewellery bases 3.30 made scarce: those that now need a tiered item to drop (Opal, Steel and Vermillion Ring, Crystal and Vanguard Belt, Stygian Vise and others) and the ten bases newly added to the general drop pool
+	BaseType == "Stygian Vise" "Opal Ring" "Steel Ring" "Vermillion Ring" "Crystal Belt" "Vanguard Belt" "Marble Amulet" "Blue Pearl Amulet" "Seaglass Amulet" "Cerulean Ring" "Iolite Ring" "Astrolabe Amulet" "Cogwork Ring" "Composite Ring" "Cord Belt" "Focused Amulet" "Geodesic Ring" "Helical Ring" "Manifold Ring" "Ratcheting Ring" "Simplex Amulet"
+	SetFontSize 40
+	SetTextColor 255 235 160
+	SetBorderColor 255 150 40
+	SetBackgroundColor 65 32 0 245
+	MinimapIcon 1 Orange Pentagon
+	PlayEffect Orange Temp
+
+Show # jw_build_rare: Rare Onyx Amulet, Amethyst Ring or Leather Belt
+	Rarity Rare
+	BaseType == "Onyx Amulet" "Amethyst Ring" "Leather Belt"
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # jw_lev_rare: Rare Lapis Amulet, Heavy Belt, Coral Ring or Two-Stone Ring during the campaign
+	Rarity Rare
+	BaseType == "Lapis Amulet" "Heavy Belt" "Coral Ring" "Two-Stone Ring"
+	AreaLevel <= 67
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # jw_rare: Every other rare ring, amulet and belt
+	Rarity Rare
+	Class == "Amulets" "Rings" "Belts"
+	SetFontSize 36
+	SetTextColor 255 255 119
+	SetBorderColor 255 255 119
+	SetBackgroundColor 32 32 6 230
+
+Show # jw_lev_base: Normal or magic leveling bases during the campaign
+	Rarity Normal Magic
+	BaseType == "Lapis Amulet" "Heavy Belt" "Coral Ring" "Two-Stone Ring"
+	AreaLevel <= 67
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # jw_end_base: Normal or magic Onyx Amulet, Amethyst Ring or Leather Belt of item level 84 or more
+	Rarity Normal Magic
+	BaseType == "Onyx Amulet" "Amethyst Ring" "Leather Belt"
+	ItemLevel >= 84
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # jw_campaign: Other normal and magic jewellery during the campaign
+	Rarity Normal Magic
+	Class == "Amulets" "Rings" "Belts"
+	AreaLevel <= 67
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 110 110 110
+	SetBackgroundColor 18 18 18 220
+
+Hide # jw_hide: Other normal and magic jewellery in maps
+	Rarity Normal Magic
+	Class == "Amulets" "Rings" "Belts"
+	AreaLevel >= 68
+
+#-------------------------------------------------------------------------------
+# ARMOUR FOR THIS BUILD
+# Armour and evasion on the same piece: Iron Reflexes turns the evasion into armour, and spell suppression only rolls on bases with dexterity.
+#-------------------------------------------------------------------------------
+
+Show # arm_build_rare: Rare Nightmare Bascinet, General's Brigandine, Dragonscale Gauntlets or Two-Toned Boots
+	Rarity Rare
+	BaseType == "Nightmare Bascinet" "General's Brigandine" "Dragonscale Gauntlets" "Two-Toned Boots"
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 90 200
+	SetBackgroundColor 150 20 110 255
+	PlayAlertSound 1 300
+	MinimapIcon 0 Pink Star
+	PlayEffect Pink
+
+Show # arm_hybrid_top: Any other rare armour and evasion piece with a required level of 60 or more, in maps
+	Rarity Rare
+	BaseType == "Pig-Faced Bascinet" "Knight Helm" "Penitent Mask" "Conquest Helmet" "Haunted Bascinet" "Desert Brigandine" "Full Dragonscale" "Triumphant Lamellar" "Full Wyvernscale" "Marshall's Brigandine" "Conquest Lamellar" "Chimerascale Gauntlets" "Wyvernscale Gauntlets" "Dragonscale Boots" "Chimerascale Boots" "Wyvernscale Boots"
+	AreaLevel >= 68
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # arm_hybrid_low: Rare armour and evasion pieces with a required level of 40 to 59, in maps
+	Rarity Rare
+	BaseType == "Fencer Helm" "Atonement Mask" "Lacquered Helmet" "Fluted Bascinet" "Full Wyrmscale" "Battle Lamellar" "Dragonscale Doublet" "Serpentscale Gauntlets" "Wyrmscale Gauntlets" "Hydrascale Gauntlets" "Serpentscale Boots" "Wyrmscale Boots" "Hydrascale Boots"
+	AreaLevel >= 68
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # arm_build_base: Normal or magic guide bases of item level 84 or more
+	Rarity Normal Magic
+	BaseType == "Nightmare Bascinet" "General's Brigandine" "Dragonscale Gauntlets" "Two-Toned Boots"
+	ItemLevel >= 84
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+#-------------------------------------------------------------------------------
+# CAMPAIGN GEAR
+# Area level 67 and below. Poisonous Concoction needs an empty main hand, so after Act 1 a weapon is only good for the spare sockets in your second weapon set.
+#-------------------------------------------------------------------------------
+
+Show # lev_link5: A five-linked body armour during the campaign
+	Class == "Body Armours"
+	LinkedSockets >= 5
+	AreaLevel <= 67
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 90 200
+	SetBackgroundColor 150 20 110 255
+	PlayAlertSound 1 300
+	MinimapIcon 0 Pink Star
+	PlayEffect Pink
+
+Show # lev_link4g: Four linked green sockets on a helmet, body armour, gloves or boots
+	Class == "Helmets" "Body Armours" "Gloves" "Boots"
+	SocketGroup "GGGG"
+	AreaLevel <= 67
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # lev_link4b: Three green and one blue, linked
+	Class == "Helmets" "Body Armours" "Gloves" "Boots"
+	SocketGroup "GGGB"
+	AreaLevel <= 67
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # lev_link4: Any other four-link on those slots
+	Class == "Helmets" "Body Armours" "Gloves" "Boots"
+	LinkedSockets >= 4
+	AreaLevel <= 67
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # lev_link3g: Three linked greens up to Act 3
+	Class == "Helmets" "Body Armours" "Gloves" "Boots" "Shields"
+	SocketGroup "GGG"
+	AreaLevel <= 32
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # rgb_campaign: Linked red, green and blue sockets during the campaign
+	SocketGroup "RGB"
+	AreaLevel <= 67
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 150 150 150
+	SetBackgroundColor 30 30 30 225
+
+Show # rgb_maps: The same in maps, on items two squares high or less
+	SocketGroup "RGB"
+	Height <= 2
+	AreaLevel >= 68
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 150 150 150
+	SetBackgroundColor 30 30 30 225
+
+Show # lev_swap_sockets: One-handed weapons with three sockets in Acts 2 and 3
+	Class == "Claws" "Daggers" "Rune Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Thrusting One Hand Swords" "Sceptres" "Wands"
+	Sockets >= 3
+	AreaLevel >= 14
+	AreaLevel <= 32
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 110 110 110
+	SetBackgroundColor 18 18 18 220
+
+Show # lev_bow_rare: Rare bows in Act 1
+	Class == "Bows"
+	Rarity Rare
+	AreaLevel <= 13
+	SetFontSize 36
+	SetTextColor 255 255 119
+	SetBorderColor 255 255 119
+	SetBackgroundColor 32 32 6 230
+
+Show # lev_bow: Bows and quivers in Act 1
+	Class == "Bows" "Quivers"
+	AreaLevel <= 13
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 110 110 110
+	SetBackgroundColor 18 18 18 220
+
+Show # lev_rare_armour: Rare armour and shields during the campaign
+	Rarity Rare
+	Class == "Helmets" "Body Armours" "Gloves" "Boots" "Shields"
+	AreaLevel <= 67
+	SetFontSize 36
+	SetTextColor 255 255 119
+	SetBorderColor 255 255 119
+	SetBackgroundColor 32 32 6 230
+
+Show # lev_rare_weapon: Rare weapons and quivers during the campaign
+	Rarity Rare
+	Class == "Bows" "Claws" "Daggers" "Rune Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Thrusting One Hand Swords" "Sceptres" "Staves" "Warstaves" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Quivers"
+	AreaLevel <= 67
+	SetFontSize 27
+	SetTextColor 200 200 110 210
+	SetBackgroundColor 0 0 0 150
+
+Show # lev_early: Normal and magic armour in Act 1
+	Rarity Normal Magic
+	Class == "Helmets" "Body Armours" "Gloves" "Boots" "Shields"
+	AreaLevel <= 13
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 110 110 110
+	SetBackgroundColor 18 18 18 220
+
+Show # lev_magic: Magic armour up to Act 3
+	Rarity Magic
+	Class == "Helmets" "Body Armours" "Gloves" "Boots" "Shields"
+	AreaLevel <= 32
+	SetFontSize 28
+	SetTextColor 136 136 255 220
+	SetBackgroundColor 0 0 0 160
+
+Hide # lev_hide: Normal and magic weapons, quivers, armour and shields from area level 14
+	Rarity Normal Magic
+	Class == "Bows" "Claws" "Daggers" "Rune Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Thrusting One Hand Swords" "Sceptres" "Staves" "Warstaves" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Helmets" "Body Armours" "Gloves" "Boots" "Shields" "Quivers"
+	AreaLevel >= 14
+	AreaLevel <= 67
+
+#-------------------------------------------------------------------------------
+# EQUIPMENT IN MAPS
+# Area level 68 and up. This is the only place rares are ever hidden, and only from tier 11 maps.
+#-------------------------------------------------------------------------------
+
+Show # tier3_rare: Unidentified rares of item tier 3
+	Rarity Rare
+	UnidentifiedItemTier >= 3
+	SetFontSize 36
+	SetTextColor 255 255 119
+	SetBorderColor 255 255 119
+	SetBackgroundColor 32 32 6 230
+
+Show # end_rare_low: Other rare weapons, shields, quivers and armour in tier 1 to 10 maps
+	Rarity Rare
+	Class == "Bows" "Claws" "Daggers" "Rune Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Thrusting One Hand Swords" "Sceptres" "Staves" "Warstaves" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Helmets" "Body Armours" "Gloves" "Boots" "Shields" "Quivers"
+	AreaLevel < 78
+	SetFontSize 27
+	SetTextColor 200 200 110 210
+	SetBackgroundColor 0 0 0 150
+
+Hide # end_rare_hide: The same from tier 11 maps
+	Rarity Rare
+	Class == "Bows" "Claws" "Daggers" "Rune Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Thrusting One Hand Swords" "Sceptres" "Staves" "Warstaves" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Helmets" "Body Armours" "Gloves" "Boots" "Shields" "Quivers"
+	AreaLevel >= 78
+
+Hide # end_hide: Normal and magic weapons, quivers, armour and shields in maps
+	Rarity Normal Magic
+	Class == "Bows" "Claws" "Daggers" "Rune Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Thrusting One Hand Swords" "Sceptres" "Staves" "Warstaves" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Helmets" "Body Armours" "Gloves" "Boots" "Shields" "Quivers"
+	AreaLevel >= 68

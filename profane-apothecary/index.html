@@ -241,6 +241,12 @@ details.tbl summary { cursor: pointer; color: var(--verdigris); width: fit-conte
 table.risk td:first-child { width: 30%; color: var(--text); }
 table.fit { min-width: 0; }
 table.roomy { min-width: 900px; }
+.lf { display: inline-block; padding: 1px 9px; border: 1px solid transparent; font-family: var(--display); line-height: 1.45; white-space: nowrap; letter-spacing: .01em; }
+.lfx { display: block; margin-top: 3px; font-size: .68rem; font-family: var(--mono); color: var(--muted); }
+#filter .codebox textarea { height: 150px; }
+#filter .codes { grid-template-columns: minmax(0, 1fr); }
+#filter code { font-family: var(--mono); font-size: .86em; background: var(--panel); border: 1px solid var(--line); border-radius: 3px; padding: 0 5px; white-space: nowrap; }
+@media (max-width: 520px) { #filter code { white-space: normal; overflow-wrap: anywhere; } }
 table.roomy th.num { white-space: normal; }
 table.grouped td > b:only-child { font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 @media (max-width: 520px) { table.fit th, table.fit td { padding: 8px 7px; } table.fit td.num, table.fit th.num { font-size: .8rem; } table.fit th.num { white-space: normal; letter-spacing: .04em; } }
@@ -351,7 +357,7 @@ a.ghost:hover { border-color: var(--muted); background: rgba(255,255,255,.04); c
 </style>
 </head>
 <body>
-<script>try{if(localStorage.getItem('guide2-rail')==='closed'&&!(window.matchMedia&&matchMedia('(max-width: 980px)').matches))document.documentElement.setAttribute('data-rail','closed')}catch(e){}</script><header class="bar"><button class="railtoggle" id="rail-toggle" type="button" aria-controls="rail" aria-expanded="true" title="Hide contents"><svg viewBox="0 0 16 16" aria-hidden="true"><rect class="fill" x="2" y="3" width="4" height="10" fill="currentColor"/><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M6 2.5v11" stroke="currentColor" stroke-width="1.3"/></svg><span>Contents</span></button><a class="brand" href="#overview">Profane Apothecary</a><span class="where" id="bar-where">Overview</span><span class="barmeta">Path of Exile 3.30 · Pathfinder</span></header><div class="shell"><nav class="rail" id="rail" aria-label="Guide contents"><h4>Contents</h4><ol><li><a href="#overview" data-name="Overview"><span class="n">01</span>Overview</a></li><li><a href="#mechanics" data-name="How it works"><span class="n">02</span>How it works</a></li><li><a href="#log" data-name="Design log"><span class="n">03</span>Design log</a></li><li><a href="#skills" data-name="Skills and links"><span class="n">04</span>Skills and links</a></li><li><a href="#tree" data-name="Passive tree"><span class="n">05</span>Passive tree</a></li><li><a href="#gear" data-name="Gear"><span class="n">06</span>Gear</a></li><li><a href="#defences" data-name="Defences"><span class="n">07</span>Defences</a></li><li><a href="#flasks" data-name="Flasks and charges"><span class="n">08</span>Flasks and charges</a></li><li><a href="#play" data-name="Playstyle"><span class="n">09</span>Playstyle</a></li><li><a href="#leveling" data-name="Leveling"><span class="n">10</span>Leveling</a></li><li><a href="#pob" data-name="Path of Building codes"><span class="n">11</span>Path of Building codes</a></li><li><a href="#risks" data-name="Unknowns and risks"><span class="n">12</span>Unknowns and risks</a></li><li><a href="#sources" data-name="Sources"><span class="n">13</span>Sources</a></li></ol><p class="railnote">The checkpoint tabs in Skills and Gear switch together and are remembered.</p></nav><main>
+<script>try{if(localStorage.getItem('guide2-rail')==='closed'&&!(window.matchMedia&&matchMedia('(max-width: 980px)').matches))document.documentElement.setAttribute('data-rail','closed')}catch(e){}</script><header class="bar"><button class="railtoggle" id="rail-toggle" type="button" aria-controls="rail" aria-expanded="true" title="Hide contents"><svg viewBox="0 0 16 16" aria-hidden="true"><rect class="fill" x="2" y="3" width="4" height="10" fill="currentColor"/><rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M6 2.5v11" stroke="currentColor" stroke-width="1.3"/></svg><span>Contents</span></button><a class="brand" href="#overview">Profane Apothecary</a><span class="where" id="bar-where">Overview</span><span class="barmeta">Path of Exile 3.30 · Pathfinder</span></header><div class="shell"><nav class="rail" id="rail" aria-label="Guide contents"><h4>Contents</h4><ol><li><a href="#overview" data-name="Overview"><span class="n">01</span>Overview</a></li><li><a href="#mechanics" data-name="How it works"><span class="n">02</span>How it works</a></li><li><a href="#log" data-name="Design log"><span class="n">03</span>Design log</a></li><li><a href="#skills" data-name="Skills and links"><span class="n">04</span>Skills and links</a></li><li><a href="#tree" data-name="Passive tree"><span class="n">05</span>Passive tree</a></li><li><a href="#gear" data-name="Gear"><span class="n">06</span>Gear</a></li><li><a href="#defences" data-name="Defences"><span class="n">07</span>Defences</a></li><li><a href="#flasks" data-name="Flasks and charges"><span class="n">08</span>Flasks and charges</a></li><li><a href="#play" data-name="Playstyle"><span class="n">09</span>Playstyle</a></li><li><a href="#leveling" data-name="Leveling"><span class="n">10</span>Leveling</a></li><li><a href="#filter" data-name="Loot filter"><span class="n">11</span>Loot filter</a></li><li><a href="#pob" data-name="Path of Building codes"><span class="n">12</span>Path of Building codes</a></li><li><a href="#risks" data-name="Unknowns and risks"><span class="n">13</span>Unknowns and risks</a></li><li><a href="#sources" data-name="Sources"><span class="n">14</span>Sources</a></li></ol><p class="railnote">The checkpoint tabs in Skills and Gear switch together and are remembered.</p></nav><main>
 <section id="overview">
   <div class="hero">
     <div class="eyebrow">Path of Exile 3.30 · Covens of Umbra · Theorycrafted from scratch</div>
@@ -367,7 +373,7 @@ a.ghost:hover { border-color: var(--muted); background: rgba(255,255,255,.04); c
       <span class="chip"><b>Defence</b> Armour, stun immunity, suppression</span>
       <span class="chip"><b>Written for</b> Softcore trade</span>
     </div>
-    <div class="cta"><a class="btn" href="#pob">Get the import codes</a><a class="ghost" href="#leveling">Leveling route</a><a class="ghost" href="#gear">Gear by checkpoint</a></div>
+    <div class="cta"><a class="btn" href="#pob">Get the import codes</a><a class="ghost" href="#leveling">Leveling route</a><a class="ghost" href="#gear">Gear by checkpoint</a><a class="ghost" href="#filter">Loot filter</a></div>
     <div class="ratings">
       <div class="rating"><span>Bossing</span><div class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div><small>15.4M opening, 11.1M sustained at level 93 on a common unique.</small></div>
       <div class="rating"><span>Mapping</span><div class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></div><small>Sunder deletes packs, but you plant your feet for every swing.</small></div>
@@ -801,8 +807,889 @@ a.ghost:hover { border-color: var(--muted); background: rgba(255,255,255,.04); c
   </div>
 </section>
 
+<section id="filter">
+  <h2><span class="secno">11</span>Loot filter</h2>
+  <p>An item filter written for this character and nobody else. It follows the guide step by step: bows until the bottle arrives at level 12, then green links and a bigger life flask every few levels, then the maul's armour bases, flasks, tinctures and jewels. Anything marked in pink is for this build. The file has 93 blocks, 72 that mark something and 21 that hide something.</p>
+
+  <div class="callout warn">
+    <h4>Not yet loaded in the game</h4>
+    <p>I cannot run the game client, so this file has never been through the game's own loader. What I could check is listed at the end of this section. If the game refuses the file, its message names a line number: delete the block that line sits in, reload, and tell me the line.</p>
+  </div>
+
+  <div class="codes"><div class="codebox"><div class="top"><b>profane-apothecary.filter</b><span class="dim">811 lines · for Path of Exile 3.30 (Covens of Umbra) · version 1.0</span></div>
+<textarea readonly id="code-filter" aria-label="Item filter text">#===============================================================================
+# Profane Apothecary Pathfinder - item filter  v1.0
+# For Path of Exile 3.30 (Covens of Umbra). Written for one character: Poisonous Concoction
+# through the campaign, then Marohi Erqi slams (see the build guide).
+#
+# INSTALL
+#   1) Put this file in:  %USERPROFILE%\Documents\My Games\Path of Exile
+#   2) In game: Escape -&gt; Options -&gt; Game -&gt; Filters, pick &quot;profane-apothecary&quot;.
+#   3) After editing the file, press the reload button next to that list.
+#
+# IF THE GAME REFUSES TO LOAD IT
+#   The message names a line number. Every block below stands alone, so delete
+#   the block that line belongs to (from its Show/Hide line to the next blank
+#   line), save and reload.
+#
+# HOW IT IS BUILT
+#   The first block that matches an item decides how it looks. Nothing at the
+#   end hides &quot;everything else&quot;: an item no block matches is shown the way the
+#   game shows it without a filter. Only these are ever hidden:
+#     - outgrown life and mana flasks, and flasks or tinctures the build has no slot for
+#     - normal and magic weapons, quivers, armour and shields from area level 14
+#     - normal and magic rings, amulets and belts in maps
+#     - rare weapons, quivers, shields and off-build armour from tier 11 maps
+#   Uniques, currency, maps, fragments, cards, gems and jewels are never hidden.
+#   Hold the highlight key (Alt) with Always Highlight on to see hidden items.
+#
+# PINK means &quot;for this build&quot;. The guide&#x27;s Loot filter section lists every colour.
+# Generated 2026-11-14 by mkfilter.py. Not affiliated with Grinding Gear Games.
+#===============================================================================
+
+#-------------------------------------------------------------------------------
+# THINGS THAT ARE SHOWN EVERYWHERE
+# These come first, so no later rule can hide them.
+#-------------------------------------------------------------------------------
+
+Show # sixlink: Any six-linked item
+	LinkedSockets 6
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 255 255
+	SetBackgroundColor 190 20 30 255
+	PlayAlertSound 6 300
+	MinimapIcon 0 Red Star
+	PlayEffect Red
+
+Show # build_unique: A unique on one of the four bases the build wears: Karui Maul, Stibnite Flask, Carnal Mitts, Triumphant Lamellar
+	Rarity Unique
+	BaseType == &quot;Karui Maul&quot; &quot;Stibnite Flask&quot; &quot;Carnal Mitts&quot; &quot;Triumphant Lamellar&quot;
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 90 200
+	SetBackgroundColor 150 20 110 255
+	PlayAlertSound 1 300
+	MinimapIcon 0 Pink Star
+	PlayEffect Pink
+
+Show # unique: Every other unique
+	Rarity Unique
+	SetFontSize 40
+	SetTextColor 175 96 37
+	SetBorderColor 175 96 37
+	SetBackgroundColor 25 14 5 245
+	PlayAlertSound 3 200
+	MinimapIcon 1 Brown Star
+	PlayEffect Brown Temp
+
+Show # fated: Items carrying the Fated flag
+	Fated True
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # influenced: Influenced items
+	HasInfluence Shaper Elder Crusader Hunter Redeemer Warlord
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # fractured: Fractured items
+	FracturedItem True
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # synthesised: Synthesised items
+	SynthesisedItem True
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # memory: Items with Memory Strands
+	MemoryStrands &gt;= 1
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # enchanted: Enchanted equipment
+	AnyEnchantment True
+	Class == &quot;Bows&quot; &quot;Claws&quot; &quot;Daggers&quot; &quot;Rune Daggers&quot; &quot;One Hand Axes&quot; &quot;One Hand Maces&quot; &quot;One Hand Swords&quot; &quot;Thrusting One Hand Swords&quot; &quot;Sceptres&quot; &quot;Staves&quot; &quot;Warstaves&quot; &quot;Two Hand Axes&quot; &quot;Two Hand Maces&quot; &quot;Two Hand Swords&quot; &quot;Wands&quot; &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot; &quot;Quivers&quot; &quot;Amulets&quot; &quot;Rings&quot; &quot;Belts&quot;
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # tier45: Unidentified magic and rare items of item tier 4 or 5
+	UnidentifiedItemTier &gt;= 4
+	SetFontSize 40
+	SetTextColor 255 235 160
+	SetBorderColor 255 150 40
+	SetBackgroundColor 65 32 0 245
+	MinimapIcon 1 Orange Pentagon
+	PlayEffect Orange Temp
+
+Show # sixsocket: Six sockets
+	Sockets &gt;= 6
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 150 150 150
+	SetBackgroundColor 30 30 30 225
+
+#-------------------------------------------------------------------------------
+# CURRENCY
+# Tiers follow long-run rarity, not live prices. Nothing in the currency tab is hidden.
+#-------------------------------------------------------------------------------
+
+Show # cur_top: Mirror, Divine Orb and the other rarest orbs
+	BaseType == &quot;Mirror of Kalandra&quot; &quot;Mirror Shard&quot; &quot;Divine Orb&quot; &quot;Hinekora&#x27;s Lock&quot; &quot;Fracturing Orb&quot; &quot;Sacred Orb&quot; &quot;Awakener&#x27;s Orb&quot; &quot;Tainted Divine Teardrop&quot;
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 255 255
+	SetBackgroundColor 190 20 30 255
+	PlayAlertSound 6 300
+	MinimapIcon 0 Red Star
+	PlayEffect Red
+
+Show # cur_build: Orb of Regret and Instilling Orb
+	BaseType == &quot;Orb of Regret&quot; &quot;Instilling Orb&quot;
+	SetFontSize 40
+	SetTextColor 235 200 110
+	SetBorderColor 255 90 200
+	SetBackgroundColor 45 32 10 250
+	MinimapIcon 1 Pink Circle
+
+Show # cur_high: Exalted Orb, Orb of Annulment, Ancient Orb, Stacked Deck
+	BaseType == &quot;Exalted Orb&quot; &quot;Orb of Annulment&quot; &quot;Ancient Orb&quot; &quot;Stacked Deck&quot;
+	SetFontSize 42
+	SetTextColor 30 20 0
+	SetBorderColor 255 245 200
+	SetBackgroundColor 235 200 110 255
+	PlayAlertSound 5 300
+	MinimapIcon 0 Yellow Circle
+	PlayEffect Yellow
+
+Show # cur_mid: Chaos, Alchemy, Vaal, Fusing, Jeweller&#x27;s, Chromatic and the other orbs you spend daily
+	BaseType == &quot;Chaos Orb&quot; &quot;Vaal Orb&quot; &quot;Orb of Alchemy&quot; &quot;Orb of Scouring&quot; &quot;Orb of Fusing&quot; &quot;Jeweller&#x27;s Orb&quot; &quot;Chromatic Orb&quot; &quot;Regal Orb&quot; &quot;Blessed Orb&quot; &quot;Gemcutter&#x27;s Prism&quot; &quot;Glassblower&#x27;s Bauble&quot; &quot;Enkindling Orb&quot; &quot;Orb of Unmaking&quot; &quot;Orb of Chance&quot; &quot;Orb of Alteration&quot; &quot;Frayed Thread&quot;
+	SetFontSize 38
+	SetTextColor 235 200 110
+	SetBorderColor 235 200 110
+	SetBackgroundColor 45 32 10 245
+	MinimapIcon 2 Yellow Circle
+
+Show # cur_low_maps: Scrolls, Transmutation, Augmentation, Scraps and Whetstones in maps
+	BaseType == &quot;Scroll of Wisdom&quot; &quot;Portal Scroll&quot; &quot;Orb of Transmutation&quot; &quot;Orb of Augmentation&quot; &quot;Armourer&#x27;s Scrap&quot; &quot;Blacksmith&#x27;s Whetstone&quot;
+	AreaLevel &gt;= 68
+	SetFontSize 28
+	SetTextColor 170 158 130 220
+	SetBackgroundColor 15 15 10 180
+
+Show # cur_any: All other stackable currency
+	Class == &quot;Stackable Currency&quot; &quot;Delve Stackable Socketable Currency&quot;
+	SetFontSize 34
+	SetTextColor 200 180 130
+	SetBorderColor 120 100 60
+	SetBackgroundColor 25 20 10 230
+
+#-------------------------------------------------------------------------------
+# MAPS, FRAGMENTS, CARDS AND QUEST ITEMS
+# Nothing here is hidden.
+#-------------------------------------------------------------------------------
+
+Show # quest: Quest and Labyrinth items
+	Class == &quot;Quest Items&quot; &quot;Labyrinth Items&quot; &quot;Pantheon Souls&quot;
+	SetFontSize 40
+	SetTextColor 74 230 58
+	SetBorderColor 74 230 58
+	SetBackgroundColor 10 35 8 245
+	MinimapIcon 1 Green Hexagon
+	PlayEffect Green
+
+Show # map_red: Maps of tier 11 and up
+	Class == &quot;Maps&quot;
+	MapTier &gt;= 11
+	SetFontSize 42
+	SetTextColor 255 255 255
+	SetBorderColor 230 70 70
+	SetBackgroundColor 75 12 12 250
+	PlayAlertSound 7 200
+	MinimapIcon 1 Red Square
+	PlayEffect Red Temp
+
+Show # map_yellow: Maps of tier 6 to 10
+	Class == &quot;Maps&quot;
+	MapTier &gt;= 6
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 230 200 60
+	SetBackgroundColor 55 48 6 245
+	MinimapIcon 2 Yellow Square
+
+Show # map_white: Maps of tier 1 to 5
+	Class == &quot;Maps&quot;
+	SetFontSize 36
+	SetTextColor 255 255 255
+	SetBorderColor 210 210 210
+	SetBackgroundColor 35 35 35 240
+	MinimapIcon 2 White Square
+
+Show # fragments: Map fragments, including the Threads that replaced scarabs in 3.30
+	Class == &quot;Map Fragments&quot; &quot;Misc Map Items&quot; &quot;Vault Keys&quot;
+	SetFontSize 38
+	SetTextColor 205 215 255
+	SetBorderColor 110 130 255
+	SetBackgroundColor 20 26 75 245
+	MinimapIcon 2 Blue Hexagon
+
+Show # div: Divination cards
+	Class == &quot;Divination Cards&quot;
+	SetFontSize 38
+	SetTextColor 0 40 70
+	SetBorderColor 230 245 255
+	SetBackgroundColor 160 215 240 255
+	MinimapIcon 2 Blue Square
+
+Show # league: League items: contracts, blueprints, Viscera from the Covens of Umbra bosses and similar
+	Class == &quot;Incursion Items&quot; &quot;Contracts&quot; &quot;Blueprints&quot; &quot;Sanctum Research&quot; &quot;Relics&quot; &quot;Wombgifts&quot; &quot;Viscera&quot; &quot;Pieces&quot; &quot;Heist Targets&quot; &quot;Trinkets&quot;
+	SetFontSize 38
+	SetTextColor 205 215 255
+	SetBorderColor 110 130 255
+	SetBackgroundColor 20 26 75 245
+	MinimapIcon 2 Blue Hexagon
+
+#-------------------------------------------------------------------------------
+# GEMS
+# Gems are never hidden. The campaign gems all come from quest rewards and vendors, so a dropped gem matters only for its quality.
+#-------------------------------------------------------------------------------
+
+Show # gem_top: Awakened gems, Enlighten, Empower, Enhance
+	Class == &quot;Skill Gems&quot; &quot;Support Gems&quot;
+	BaseType &quot;Awakened&quot; &quot;Enlighten&quot; &quot;Empower&quot; &quot;Enhance&quot;
+	SetFontSize 42
+	SetTextColor 255 255 255
+	SetBorderColor 27 162 155
+	SetBackgroundColor 10 75 72 250
+	PlayAlertSound 5 200
+	MinimapIcon 1 Cyan Triangle
+	PlayEffect Cyan Temp
+
+Show # gem_transfigured: Transfigured gems
+	TransfiguredGem True
+	SetFontSize 38
+	SetTextColor 27 200 190
+	SetBorderColor 27 162 155
+	SetBackgroundColor 6 35 34 240
+	MinimapIcon 2 Cyan Triangle
+
+Show # gem_quality: Gems with 14% quality or more
+	Class == &quot;Skill Gems&quot; &quot;Support Gems&quot;
+	Quality &gt;= 14
+	SetFontSize 38
+	SetTextColor 27 200 190
+	SetBorderColor 27 162 155
+	SetBackgroundColor 6 35 34 240
+	MinimapIcon 2 Cyan Triangle
+
+Show # gem_campaign: Any gem during the campaign
+	Class == &quot;Skill Gems&quot; &quot;Support Gems&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 34
+	SetTextColor 27 162 155
+	SetBorderColor 20 100 96
+	SetBackgroundColor 5 22 21 225
+
+Show # gem_maps: Plain gems in maps
+	Class == &quot;Skill Gems&quot; &quot;Support Gems&quot;
+	SetFontSize 27
+	SetTextColor 27 162 155 200
+	SetBackgroundColor 0 0 0 150
+
+#-------------------------------------------------------------------------------
+# FLASKS AND TINCTURES
+# The build is a Pathfinder: the five belt slots are fixed at each checkpoint, and Poisonous Concoction hits harder with a bigger life flask.
+#-------------------------------------------------------------------------------
+
+Show # flask_quick_camp: Quicksilver Flask during the campaign
+	BaseType == &quot;Quicksilver Flask&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 38
+	SetTextColor 255 190 235
+	SetBorderColor 225 80 180
+	SetBackgroundColor 50 12 40 240
+	MinimapIcon 2 Pink Circle
+
+Show # flask_jade_camp: Jade Flask during the campaign
+	BaseType == &quot;Jade Flask&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 38
+	SetTextColor 255 190 235
+	SetBorderColor 225 80 180
+	SetBackgroundColor 50 12 40 240
+	MinimapIcon 2 Pink Circle
+
+Show # flask_end_top: Amethyst, Diamond or Sulphur Flask of item level 84 or more
+	BaseType == &quot;Amethyst Flask&quot; &quot;Diamond Flask&quot; &quot;Sulphur Flask&quot;
+	ItemLevel &gt;= 84
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # flask_end: Amethyst, Diamond or Sulphur Flask of any item level
+	BaseType == &quot;Amethyst Flask&quot; &quot;Diamond Flask&quot; &quot;Sulphur Flask&quot;
+	SetFontSize 38
+	SetTextColor 255 190 235
+	SetBorderColor 225 80 180
+	SetBackgroundColor 50 12 40 240
+	MinimapIcon 2 Pink Circle
+
+Show # flask_quick_end: Quicksilver Flask in maps
+	BaseType == &quot;Quicksilver Flask&quot;
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # tincture_top: Oakbranch or Rosethorn Tincture of item level 85 or more
+	BaseType == &quot;Oakbranch Tincture&quot; &quot;Rosethorn Tincture&quot;
+	ItemLevel &gt;= 85
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # tincture: Oakbranch or Rosethorn Tincture of any item level
+	BaseType == &quot;Oakbranch Tincture&quot; &quot;Rosethorn Tincture&quot;
+	SetFontSize 38
+	SetTextColor 255 190 235
+	SetBorderColor 225 80 180
+	SetBackgroundColor 50 12 40 240
+	MinimapIcon 2 Pink Circle
+
+Hide # tincture_other_hide: Other tinctures in maps
+	Class == &quot;Tinctures&quot;
+	Rarity Normal Magic
+	AreaLevel &gt;= 68
+
+Show # tincture_other: Other tinctures during the campaign
+	Class == &quot;Tinctures&quot;
+	SetFontSize 33
+	SetTextColor 190 230 190
+	SetBorderColor 70 140 85
+	SetBackgroundColor 10 30 15 225
+
+Hide # life_skip_sanctified: Sanctified Life Flasks
+	Class == &quot;Life Flasks&quot;
+	DropLevel &gt;= 50
+	DropLevel &lt; 60
+
+Hide # life_skip_eternal: Eternal Life Flasks
+	Class == &quot;Life Flasks&quot;
+	DropLevel &gt;= 65
+
+Hide # life_old_10: Life flasks below drop level 6 from area level 10
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 10
+	DropLevel &lt; 6
+
+Hide # life_old_16: Life flasks below drop level 12 from area level 16
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 16
+	DropLevel &lt; 12
+
+Hide # life_old_22: Life flasks below drop level 18 from area level 22
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 22
+	DropLevel &lt; 18
+
+Hide # life_old_28: Life flasks below drop level 24 from area level 28
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 28
+	DropLevel &lt; 24
+
+Hide # life_old_34: Life flasks below drop level 30 from area level 34
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 34
+	DropLevel &lt; 30
+
+Hide # life_old_40: Life flasks below drop level 36 from area level 40
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 40
+	DropLevel &lt; 36
+
+Hide # life_old_46: Life flasks below drop level 42 from area level 46
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 46
+	DropLevel &lt; 42
+
+Hide # life_old_64: Life flasks below drop level 60 from area level 64
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 64
+	DropLevel &lt; 60
+
+Hide # life_red_hide: All life flasks from tier 11 maps
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 78
+
+Show # life_maps: Divine Life Flasks in early maps
+	Class == &quot;Life Flasks&quot;
+	AreaLevel &gt;= 68
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # life_build: Life flasks in the sizes the leveling route uses: Grand, Giant, Colossal, Sacred, Hallowed, Divine
+	Class == &quot;Life Flasks&quot;
+	DropLevel &gt;= 18
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # life_early: Small to Greater Life Flasks in Act 1 and 2
+	Class == &quot;Life Flasks&quot;
+	SetFontSize 33
+	SetTextColor 190 230 190
+	SetBorderColor 70 140 85
+	SetBackgroundColor 10 30 15 225
+
+Hide # mana_hide: Mana flasks from Act 5
+	Class == &quot;Mana Flasks&quot;
+	AreaLevel &gt;= 41
+
+Hide # mana_old_16: Mana flasks below drop level 12 from area level 16
+	Class == &quot;Mana Flasks&quot;
+	AreaLevel &gt;= 16
+	DropLevel &lt; 12
+
+Hide # mana_old_28: Mana flasks below drop level 24 from area level 28
+	Class == &quot;Mana Flasks&quot;
+	AreaLevel &gt;= 28
+	DropLevel &lt; 24
+
+Show # mana: Mana flasks in Acts 1 to 4
+	Class == &quot;Mana Flasks&quot;
+	SetFontSize 33
+	SetTextColor 190 230 190
+	SetBorderColor 70 140 85
+	SetBackgroundColor 10 30 15 225
+
+Hide # hybrid_hide: Hybrid flasks after Act 1
+	Class == &quot;Hybrid Flasks&quot;
+	AreaLevel &gt;= 14
+
+Hide # utility_hide: Other utility flasks in maps
+	Class == &quot;Utility Flasks&quot;
+	Rarity Normal Magic
+	AreaLevel &gt;= 68
+
+Show # utility: Other utility flasks during the campaign
+	Class == &quot;Utility Flasks&quot;
+	SetFontSize 33
+	SetTextColor 190 230 190
+	SetBorderColor 70 140 85
+	SetBackgroundColor 10 30 15 225
+
+#-------------------------------------------------------------------------------
+# JEWELS
+# The tree has five jewel sockets at Stage 1 and six from Stage 2.
+#-------------------------------------------------------------------------------
+
+Show # jewel_cluster: Cluster jewels
+	Class == &quot;Jewels&quot;
+	BaseType &quot;Cluster Jewel&quot;
+	SetFontSize 38
+	SetTextColor 255 255 255
+	SetBorderColor 200 200 200
+	SetBackgroundColor 60 60 60 245
+	MinimapIcon 2 Grey Diamond
+
+Show # jewel_rare: Rare jewels
+	Class == &quot;Jewels&quot; &quot;Abyss Jewels&quot;
+	Rarity Rare
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # jewel: Magic jewels
+	Class == &quot;Jewels&quot; &quot;Abyss Jewels&quot;
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+#-------------------------------------------------------------------------------
+# RINGS, AMULETS AND BELTS
+#-------------------------------------------------------------------------------
+
+Show # jw_gated: Jewellery bases 3.30 made scarce: those that now need a tiered item to drop (Opal, Steel and Vermillion Ring, Crystal and Vanguard Belt, Stygian Vise and others) and the ten bases newly added to the general drop pool
+	BaseType == &quot;Stygian Vise&quot; &quot;Opal Ring&quot; &quot;Steel Ring&quot; &quot;Vermillion Ring&quot; &quot;Crystal Belt&quot; &quot;Vanguard Belt&quot; &quot;Marble Amulet&quot; &quot;Blue Pearl Amulet&quot; &quot;Seaglass Amulet&quot; &quot;Cerulean Ring&quot; &quot;Iolite Ring&quot; &quot;Astrolabe Amulet&quot; &quot;Cogwork Ring&quot; &quot;Composite Ring&quot; &quot;Cord Belt&quot; &quot;Focused Amulet&quot; &quot;Geodesic Ring&quot; &quot;Helical Ring&quot; &quot;Manifold Ring&quot; &quot;Ratcheting Ring&quot; &quot;Simplex Amulet&quot;
+	SetFontSize 40
+	SetTextColor 255 235 160
+	SetBorderColor 255 150 40
+	SetBackgroundColor 65 32 0 245
+	MinimapIcon 1 Orange Pentagon
+	PlayEffect Orange Temp
+
+Show # jw_build_rare: Rare Onyx Amulet, Amethyst Ring or Leather Belt
+	Rarity Rare
+	BaseType == &quot;Onyx Amulet&quot; &quot;Amethyst Ring&quot; &quot;Leather Belt&quot;
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # jw_lev_rare: Rare Lapis Amulet, Heavy Belt, Coral Ring or Two-Stone Ring during the campaign
+	Rarity Rare
+	BaseType == &quot;Lapis Amulet&quot; &quot;Heavy Belt&quot; &quot;Coral Ring&quot; &quot;Two-Stone Ring&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # jw_rare: Every other rare ring, amulet and belt
+	Rarity Rare
+	Class == &quot;Amulets&quot; &quot;Rings&quot; &quot;Belts&quot;
+	SetFontSize 36
+	SetTextColor 255 255 119
+	SetBorderColor 255 255 119
+	SetBackgroundColor 32 32 6 230
+
+Show # jw_lev_base: Normal or magic leveling bases during the campaign
+	Rarity Normal Magic
+	BaseType == &quot;Lapis Amulet&quot; &quot;Heavy Belt&quot; &quot;Coral Ring&quot; &quot;Two-Stone Ring&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # jw_end_base: Normal or magic Onyx Amulet, Amethyst Ring or Leather Belt of item level 84 or more
+	Rarity Normal Magic
+	BaseType == &quot;Onyx Amulet&quot; &quot;Amethyst Ring&quot; &quot;Leather Belt&quot;
+	ItemLevel &gt;= 84
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # jw_campaign: Other normal and magic jewellery during the campaign
+	Rarity Normal Magic
+	Class == &quot;Amulets&quot; &quot;Rings&quot; &quot;Belts&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 110 110 110
+	SetBackgroundColor 18 18 18 220
+
+Hide # jw_hide: Other normal and magic jewellery in maps
+	Rarity Normal Magic
+	Class == &quot;Amulets&quot; &quot;Rings&quot; &quot;Belts&quot;
+	AreaLevel &gt;= 68
+
+#-------------------------------------------------------------------------------
+# ARMOUR FOR THIS BUILD
+# Armour and evasion on the same piece: Iron Reflexes turns the evasion into armour, and spell suppression only rolls on bases with dexterity.
+#-------------------------------------------------------------------------------
+
+Show # arm_build_rare: Rare Nightmare Bascinet, General&#x27;s Brigandine, Dragonscale Gauntlets or Two-Toned Boots
+	Rarity Rare
+	BaseType == &quot;Nightmare Bascinet&quot; &quot;General&#x27;s Brigandine&quot; &quot;Dragonscale Gauntlets&quot; &quot;Two-Toned Boots&quot;
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 90 200
+	SetBackgroundColor 150 20 110 255
+	PlayAlertSound 1 300
+	MinimapIcon 0 Pink Star
+	PlayEffect Pink
+
+Show # arm_hybrid_top: Any other rare armour and evasion piece with a required level of 60 or more, in maps
+	Rarity Rare
+	BaseType == &quot;Pig-Faced Bascinet&quot; &quot;Knight Helm&quot; &quot;Penitent Mask&quot; &quot;Conquest Helmet&quot; &quot;Haunted Bascinet&quot; &quot;Desert Brigandine&quot; &quot;Full Dragonscale&quot; &quot;Triumphant Lamellar&quot; &quot;Full Wyvernscale&quot; &quot;Marshall&#x27;s Brigandine&quot; &quot;Conquest Lamellar&quot; &quot;Chimerascale Gauntlets&quot; &quot;Wyvernscale Gauntlets&quot; &quot;Dragonscale Boots&quot; &quot;Chimerascale Boots&quot; &quot;Wyvernscale Boots&quot;
+	AreaLevel &gt;= 68
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # arm_hybrid_low: Rare armour and evasion pieces with a required level of 40 to 59, in maps
+	Rarity Rare
+	BaseType == &quot;Fencer Helm&quot; &quot;Atonement Mask&quot; &quot;Lacquered Helmet&quot; &quot;Fluted Bascinet&quot; &quot;Full Wyrmscale&quot; &quot;Battle Lamellar&quot; &quot;Dragonscale Doublet&quot; &quot;Serpentscale Gauntlets&quot; &quot;Wyrmscale Gauntlets&quot; &quot;Hydrascale Gauntlets&quot; &quot;Serpentscale Boots&quot; &quot;Wyrmscale Boots&quot; &quot;Hydrascale Boots&quot;
+	AreaLevel &gt;= 68
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # arm_build_base: Normal or magic guide bases of item level 84 or more
+	Rarity Normal Magic
+	BaseType == &quot;Nightmare Bascinet&quot; &quot;General&#x27;s Brigandine&quot; &quot;Dragonscale Gauntlets&quot; &quot;Two-Toned Boots&quot;
+	ItemLevel &gt;= 84
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+#-------------------------------------------------------------------------------
+# CAMPAIGN GEAR
+# Area level 67 and below. Poisonous Concoction needs an empty main hand, so after Act 1 a weapon is only good for the spare sockets in your second weapon set.
+#-------------------------------------------------------------------------------
+
+Show # lev_link5: A five-linked body armour during the campaign
+	Class == &quot;Body Armours&quot;
+	LinkedSockets &gt;= 5
+	AreaLevel &lt;= 67
+	SetFontSize 45
+	SetTextColor 255 255 255
+	SetBorderColor 255 90 200
+	SetBackgroundColor 150 20 110 255
+	PlayAlertSound 1 300
+	MinimapIcon 0 Pink Star
+	PlayEffect Pink
+
+Show # lev_link4g: Four linked green sockets on a helmet, body armour, gloves or boots
+	Class == &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot;
+	SocketGroup &quot;GGGG&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # lev_link4b: Three green and one blue, linked
+	Class == &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot;
+	SocketGroup &quot;GGGB&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 42
+	SetTextColor 255 205 240
+	SetBorderColor 255 90 200
+	SetBackgroundColor 85 15 65 250
+	MinimapIcon 1 Pink Diamond
+	PlayEffect Pink Temp
+
+Show # lev_link4: Any other four-link on those slots
+	Class == &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot;
+	LinkedSockets &gt;= 4
+	AreaLevel &lt;= 67
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # lev_link3g: Three linked greens up to Act 3
+	Class == &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot;
+	SocketGroup &quot;GGG&quot;
+	AreaLevel &lt;= 32
+	SetFontSize 33
+	SetTextColor 235 175 215
+	SetBorderColor 170 70 140
+	SetBackgroundColor 30 10 25 225
+
+Show # rgb_campaign: Linked red, green and blue sockets during the campaign
+	SocketGroup &quot;RGB&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 150 150 150
+	SetBackgroundColor 30 30 30 225
+
+Show # rgb_maps: The same in maps, on items two squares high or less
+	SocketGroup &quot;RGB&quot;
+	Height &lt;= 2
+	AreaLevel &gt;= 68
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 150 150 150
+	SetBackgroundColor 30 30 30 225
+
+Show # lev_swap_sockets: One-handed weapons with three sockets in Acts 2 and 3
+	Class == &quot;Claws&quot; &quot;Daggers&quot; &quot;Rune Daggers&quot; &quot;One Hand Axes&quot; &quot;One Hand Maces&quot; &quot;One Hand Swords&quot; &quot;Thrusting One Hand Swords&quot; &quot;Sceptres&quot; &quot;Wands&quot;
+	Sockets &gt;= 3
+	AreaLevel &gt;= 14
+	AreaLevel &lt;= 32
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 110 110 110
+	SetBackgroundColor 18 18 18 220
+
+Show # lev_bow_rare: Rare bows in Act 1
+	Class == &quot;Bows&quot;
+	Rarity Rare
+	AreaLevel &lt;= 13
+	SetFontSize 36
+	SetTextColor 255 255 119
+	SetBorderColor 255 255 119
+	SetBackgroundColor 32 32 6 230
+
+Show # lev_bow: Bows and quivers in Act 1
+	Class == &quot;Bows&quot; &quot;Quivers&quot;
+	AreaLevel &lt;= 13
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 110 110 110
+	SetBackgroundColor 18 18 18 220
+
+Show # lev_rare_armour: Rare armour and shields during the campaign
+	Rarity Rare
+	Class == &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 36
+	SetTextColor 255 255 119
+	SetBorderColor 255 255 119
+	SetBackgroundColor 32 32 6 230
+
+Show # lev_rare_weapon: Rare weapons and quivers during the campaign
+	Rarity Rare
+	Class == &quot;Bows&quot; &quot;Claws&quot; &quot;Daggers&quot; &quot;Rune Daggers&quot; &quot;One Hand Axes&quot; &quot;One Hand Maces&quot; &quot;One Hand Swords&quot; &quot;Thrusting One Hand Swords&quot; &quot;Sceptres&quot; &quot;Staves&quot; &quot;Warstaves&quot; &quot;Two Hand Axes&quot; &quot;Two Hand Maces&quot; &quot;Two Hand Swords&quot; &quot;Wands&quot; &quot;Quivers&quot;
+	AreaLevel &lt;= 67
+	SetFontSize 27
+	SetTextColor 200 200 110 210
+	SetBackgroundColor 0 0 0 150
+
+Show # lev_early: Normal and magic armour in Act 1
+	Rarity Normal Magic
+	Class == &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot;
+	AreaLevel &lt;= 13
+	SetFontSize 33
+	SetTextColor 220 220 220
+	SetBorderColor 110 110 110
+	SetBackgroundColor 18 18 18 220
+
+Show # lev_magic: Magic armour up to Act 3
+	Rarity Magic
+	Class == &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot;
+	AreaLevel &lt;= 32
+	SetFontSize 28
+	SetTextColor 136 136 255 220
+	SetBackgroundColor 0 0 0 160
+
+Hide # lev_hide: Normal and magic weapons, quivers, armour and shields from area level 14
+	Rarity Normal Magic
+	Class == &quot;Bows&quot; &quot;Claws&quot; &quot;Daggers&quot; &quot;Rune Daggers&quot; &quot;One Hand Axes&quot; &quot;One Hand Maces&quot; &quot;One Hand Swords&quot; &quot;Thrusting One Hand Swords&quot; &quot;Sceptres&quot; &quot;Staves&quot; &quot;Warstaves&quot; &quot;Two Hand Axes&quot; &quot;Two Hand Maces&quot; &quot;Two Hand Swords&quot; &quot;Wands&quot; &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot; &quot;Quivers&quot;
+	AreaLevel &gt;= 14
+	AreaLevel &lt;= 67
+
+#-------------------------------------------------------------------------------
+# EQUIPMENT IN MAPS
+# Area level 68 and up. This is the only place rares are ever hidden, and only from tier 11 maps.
+#-------------------------------------------------------------------------------
+
+Show # tier3_rare: Unidentified rares of item tier 3
+	Rarity Rare
+	UnidentifiedItemTier &gt;= 3
+	SetFontSize 36
+	SetTextColor 255 255 119
+	SetBorderColor 255 255 119
+	SetBackgroundColor 32 32 6 230
+
+Show # end_rare_low: Other rare weapons, shields, quivers and armour in tier 1 to 10 maps
+	Rarity Rare
+	Class == &quot;Bows&quot; &quot;Claws&quot; &quot;Daggers&quot; &quot;Rune Daggers&quot; &quot;One Hand Axes&quot; &quot;One Hand Maces&quot; &quot;One Hand Swords&quot; &quot;Thrusting One Hand Swords&quot; &quot;Sceptres&quot; &quot;Staves&quot; &quot;Warstaves&quot; &quot;Two Hand Axes&quot; &quot;Two Hand Maces&quot; &quot;Two Hand Swords&quot; &quot;Wands&quot; &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot; &quot;Quivers&quot;
+	AreaLevel &lt; 78
+	SetFontSize 27
+	SetTextColor 200 200 110 210
+	SetBackgroundColor 0 0 0 150
+
+Hide # end_rare_hide: The same from tier 11 maps
+	Rarity Rare
+	Class == &quot;Bows&quot; &quot;Claws&quot; &quot;Daggers&quot; &quot;Rune Daggers&quot; &quot;One Hand Axes&quot; &quot;One Hand Maces&quot; &quot;One Hand Swords&quot; &quot;Thrusting One Hand Swords&quot; &quot;Sceptres&quot; &quot;Staves&quot; &quot;Warstaves&quot; &quot;Two Hand Axes&quot; &quot;Two Hand Maces&quot; &quot;Two Hand Swords&quot; &quot;Wands&quot; &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot; &quot;Quivers&quot;
+	AreaLevel &gt;= 78
+
+Hide # end_hide: Normal and magic weapons, quivers, armour and shields in maps
+	Rarity Normal Magic
+	Class == &quot;Bows&quot; &quot;Claws&quot; &quot;Daggers&quot; &quot;Rune Daggers&quot; &quot;One Hand Axes&quot; &quot;One Hand Maces&quot; &quot;One Hand Swords&quot; &quot;Thrusting One Hand Swords&quot; &quot;Sceptres&quot; &quot;Staves&quot; &quot;Warstaves&quot; &quot;Two Hand Axes&quot; &quot;Two Hand Maces&quot; &quot;Two Hand Swords&quot; &quot;Wands&quot; &quot;Helmets&quot; &quot;Body Armours&quot; &quot;Gloves&quot; &quot;Boots&quot; &quot;Shields&quot; &quot;Quivers&quot;
+	AreaLevel &gt;= 68
+</textarea>
+<div class="top"><span class="cta"><a class="btn" href="https://phoenix9300.github.io/Path-of-Exile-1/profane-apothecary/profane-apothecary.filter">Download the file</a><button class="btn" type="button" data-copy="code-filter" data-done="Copied. Paste it into a text file named profane-apothecary.filter.">Copy the whole filter</button></span><span class="status" id="st-filter" role="status"></span></div></div></div>
+
+  <div class="sub">
+    <h3>Install</h3>
+    <ol>
+      <li>Download the file, or copy the text into a new text file and name it <code>profane-apothecary.filter</code>. The ending must be <code>.filter</code>, not <code>.filter.txt</code>.</li>
+      <li>Put it in <code>%USERPROFILE%\Documents\My Games\Path of Exile</code>.</li>
+      <li>In game press Escape, open Options, then Game, and choose <b>profane-apothecary</b> in the Filters list.</li>
+      <li>After you edit the file, press the reload button beside that list. A wrong line is reported in chat with its line number.</li>
+    </ol>
+    <p>Hidden items are not gone. With Always Highlight on, hold the highlight key (Alt by default) and they appear.</p>
+  </div>
+
+  <div class="sub">
+    <h3>Pink: for this build</h3>
+    <p>Four strengths of the same colour. The brightest is an exact piece from the Gear section; the faintest is a base worth crafting on. "Sound", "beam" and "map icon" under a label mean it also plays an alert, lights a beam or pins the minimap.</p>
+    <div class="scroll"><table class="roomy"><thead><tr><th style="width:19%">Marker</th><th style="width:30%">What it marks</th><th style="width:35%">Why</th><th>Where</th></tr></thead><tbody><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:17.0px;border-color:rgb(255,90,200);background:rgba(150,20,110,1.00);">Karui Maul</span><span class="lfx">sound · beam · map icon</span></td><td>A unique on one of the four bases the build wears: Karui Maul, Stibnite Flask, Carnal Mitts, Triumphant Lamellar</td><td>Marohi Erqi, Sin&#x27;s Rebirth, The Embalmer or Farrul&#x27;s Fur. Only the maul&#x27;s base has a single unique; the other three have several, so pick it up and identify it.</td><td>Everywhere</td></tr><tr><td><span class="lf" style="color:rgb(235,200,110);font-size:15.3px;border-color:rgb(255,90,200);background:rgba(45,32,10,0.98);">Orb of Regret</span><span class="lfx">map icon</span></td><td>Orb of Regret and Instilling Orb</td><td>The swap to the maul costs five paid refunds. The flasks on the endgame belt carry &quot;used when charges reach full&quot;, which an Instilling Orb adds.</td><td>Everywhere</td></tr><tr><td><span class="lf" style="color:rgb(255,190,235);font-size:14.7px;border-color:rgb(225,80,180);background:rgba(50,12,40,0.94);">Quicksilver Flask</span><span class="lfx">map icon</span></td><td>Quicksilver Flask during the campaign</td><td>On the belt from Act 1 until Stage 2.</td><td>Campaign</td></tr><tr><td><span class="lf" style="color:rgb(255,190,235);font-size:14.7px;border-color:rgb(225,80,180);background:rgba(50,12,40,0.94);">Jade Flask</span><span class="lfx">map icon</span></td><td>Jade Flask during the campaign</td><td>Takes the mana flask&#x27;s place by level 34.</td><td>Campaign</td></tr><tr><td><span class="lf" style="color:rgb(255,205,240);font-size:16.0px;border-color:rgb(255,90,200);background:rgba(85,15,65,0.98);">Sulphur Flask</span><span class="lfx">beam · map icon</span></td><td>Amethyst, Diamond or Sulphur Flask of item level 84 or more</td><td>High enough to roll the affixes on the Stage 2 belt in the Gear section: Perpetual needs 83, of the Armadillo 84.</td><td>Maps</td></tr><tr><td><span class="lf" style="color:rgb(255,190,235);font-size:14.7px;border-color:rgb(225,80,180);background:rgba(50,12,40,0.94);">Amethyst Flask</span><span class="lfx">map icon</span></td><td>Amethyst, Diamond or Sulphur Flask of any item level</td><td>The endgame belt. Usable as soon as it drops; reroll later on a higher item level.</td><td>Everywhere</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">Quicksilver Flask</span></td><td>Quicksilver Flask in maps</td><td>Stage 1 only. A Sulphur Flask takes the slot at Stage 2.</td><td>Maps</td></tr><tr><td><span class="lf" style="color:rgb(255,205,240);font-size:16.0px;border-color:rgb(255,90,200);background:rgba(85,15,65,0.98);">Rosethorn Tincture</span><span class="lfx">beam · map icon</span></td><td>Oakbranch or Rosethorn Tincture of item level 85 or more</td><td>High enough to roll the Enriched prefix (84) and the suffix of Ferocity (85).</td><td>Maps</td></tr><tr><td><span class="lf" style="color:rgb(255,190,235);font-size:14.7px;border-color:rgb(225,80,180);background:rgba(50,12,40,0.94);">Oakbranch Tincture</span><span class="lfx">map icon</span></td><td>Oakbranch or Rosethorn Tincture of any item level</td><td>The third belt slot from the swap on.</td><td>Everywhere</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">Divine Life Flask</span></td><td>Divine Life Flasks in early maps</td><td>Stage 1 carries one.</td><td>Maps, tier 1–10</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">Hallowed Life Flask</span></td><td>Life flasks in the sizes the leveling route uses: Grand, Giant, Colossal, Sacred, Hallowed, Divine</td><td>Poisonous Concoction adds a share of the flask recovery as chaos damage. Replace all three each time a bigger base appears.</td><td>Campaign, from area level 18</td></tr><tr><td><span class="lf" style="color:rgb(255,205,240);font-size:16.0px;border-color:rgb(255,90,200);background:rgba(85,15,65,0.98);">Crimson Jewel</span><span class="lfx">beam · map icon</span></td><td>Rare jewels</td><td>Five sockets to fill at Stage 1, six from Stage 2. One jewel should carry &quot;Corrupted Blood cannot be inflicted on you&quot;.</td><td>Everywhere</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">Viridian Jewel</span></td><td>Magic jewels</td><td>A stopgap, or a base for a Regal Orb.</td><td>Everywhere</td></tr><tr><td><span class="lf" style="color:rgb(255,205,240);font-size:16.0px;border-color:rgb(255,90,200);background:rgba(85,15,65,0.98);">Amethyst Ring</span><span class="lfx">beam · map icon</span></td><td>Rare Onyx Amulet, Amethyst Ring or Leather Belt</td><td>The exact bases in the Gear section.</td><td>Everywhere</td></tr><tr><td><span class="lf" style="color:rgb(255,205,240);font-size:16.0px;border-color:rgb(255,90,200);background:rgba(85,15,65,0.98);">Two-Stone Ring</span><span class="lfx">beam · map icon</span></td><td>Rare Lapis Amulet, Heavy Belt, Coral Ring or Two-Stone Ring during the campaign</td><td>The leveling bases: intelligence for the blue gem, strength, life and resistances.</td><td>Campaign</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">Heavy Belt</span></td><td>Normal or magic leveling bases during the campaign</td><td>A base to craft on. An Essence or an Orb of Alchemy works on a normal one.</td><td>Campaign</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">Onyx Amulet</span></td><td>Normal or magic Onyx Amulet, Amethyst Ring or Leather Belt of item level 84 or more</td><td>A base worth crafting on.</td><td>Maps</td></tr><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:17.0px;border-color:rgb(255,90,200);background:rgba(150,20,110,1.00);">Nightmare Bascinet</span><span class="lfx">sound · beam · map icon</span></td><td>Rare Nightmare Bascinet, General&#x27;s Brigandine, Dragonscale Gauntlets or Two-Toned Boots</td><td>The exact bases in the Gear section. Two-Toned Boots come in three kinds under one name: the build wants the one with armour and evasion.</td><td>Everywhere</td></tr><tr><td><span class="lf" style="color:rgb(255,205,240);font-size:16.0px;border-color:rgb(255,90,200);background:rgba(85,15,65,0.98);">Dragonscale Boots</span><span class="lfx">beam · map icon</span></td><td>Any other rare armour and evasion piece with a required level of 60 or more, in maps</td><td>Same type as the guide bases. Some need a higher level and have more armour and evasion than the ones in the Gear section.</td><td>Maps</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">Hydrascale Gauntlets</span></td><td>Rare armour and evasion pieces with a required level of 40 to 59, in maps</td><td>The right kind of base, but its armour and evasion are low. A stopgap if the modifiers are good.</td><td>Maps</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">General&#x27;s Brigandine</span></td><td>Normal or magic guide bases of item level 84 or more</td><td>A base worth crafting on.</td><td>Maps</td></tr><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:17.0px;border-color:rgb(255,90,200);background:rgba(150,20,110,1.00);">Five-linked body armour</span><span class="lfx">sound · beam · map icon</span></td><td>A five-linked body armour during the campaign</td><td>Room for Cruelty or Faster Attacks on the bottle.</td><td>Campaign</td></tr><tr><td><span class="lf" style="color:rgb(255,205,240);font-size:16.0px;border-color:rgb(255,90,200);background:rgba(85,15,65,0.98);">G-G-G-G gloves</span><span class="lfx">beam · map icon</span></td><td>Four linked green sockets on a helmet, body armour, gloves or boots</td><td>The Act 1 to 3 link set: Poisonous Concoction, Volley, Void Manipulation, Chance to Poison.</td><td>Campaign</td></tr><tr><td><span class="lf" style="color:rgb(255,205,240);font-size:16.0px;border-color:rgb(255,90,200);background:rgba(85,15,65,0.98);">G-G-G-B boots</span><span class="lfx">beam · map icon</span></td><td>Three green and one blue, linked</td><td>The link set from the Act 3 library on, when Unbound Ailments replaces Chance to Poison.</td><td>Campaign</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">Four-linked helmet</span></td><td>Any other four-link on those slots</td><td>Recolour it with Chromatic Orbs.</td><td>Campaign</td></tr><tr><td><span class="lf" style="color:rgb(235,175,215);font-size:13.0px;border-color:rgb(170,70,140);background:rgba(30,10,25,0.88);">G-G-G shield</span></td><td>Three linked greens up to Act 3</td><td>The bottle and its first two supports until a four-link turns up.</td><td>Acts 1 to 3 (area level 1–32)</td></tr></tbody></table></div>
+<div class="prose">
+    <p>Two-Toned Boots are one name for three different boots. The filter cannot tell them apart by name, so check that the pair on the ground has armour and evasion, not energy shield.</p>
+    <p>The item levels come from the affixes on the Stage 2 belt in the Gear section, as Path of Building lists them: Chemist's 82, of Incision 82, Perpetual 83, Enriched 84, of the Armadillo 84, of Ferocity 85. A flask below that is still worth wearing until a better one drops.</p>
+</div>
+  </div>
+
+  <div class="sub">
+    <h3>Every other marker</h3>
+    <p>These work like any general filter. Currency tiers follow long-run rarity, not this week's prices.</p>
+    <div class="scroll"><table><thead><tr><th style="width:24%">Marker</th><th>What it marks</th></tr></thead><tbody><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:17.0px;border-color:rgb(255,255,255);background:rgba(190,20,30,1.00);">Divine Orb</span><span class="lfx">sound · beam · map icon</span></td><td>Any six-linked item; mirror, Divine Orb and the other rarest orbs.</td></tr><tr><td><span class="lf" style="color:rgb(175,96,37);font-size:15.3px;border-color:rgb(175,96,37);background:rgba(25,14,5,0.96);">Unique item</span><span class="lfx">sound · beam · map icon</span></td><td>Every other unique.</td></tr><tr><td><span class="lf" style="color:rgb(255,235,160);font-size:15.3px;border-color:rgb(255,150,40);background:rgba(65,32,0,0.96);">Tier 5 rare</span><span class="lfx">beam · map icon</span></td><td>Unidentified magic and rare items of item tier 4 or 5; jewellery bases 3.30 made scarce: those that now need a tiered item to drop (Opal, Steel and Vermillion Ring, Crystal and Vanguard Belt, Stygian Vise and others) and the ten bases newly added to the general drop pool.</td></tr><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:14.7px;border-color:rgb(200,200,200);background:rgba(60,60,60,0.96);">Shaper item</span><span class="lfx">map icon</span></td><td>Items carrying the Fated flag; influenced items; fractured items; synthesised items; items with Memory Strands; enchanted equipment; cluster jewels.</td></tr><tr><td><span class="lf" style="color:rgb(255,255,119);font-size:14.0px;border-color:rgb(255,255,119);background:rgba(32,32,6,0.90);">Rare boots</span></td><td>Every other rare ring, amulet and belt; rare bows in Act 1; rare armour and shields during the campaign; unidentified rares of item tier 3.</td></tr><tr><td><span class="lf" style="color:rgba(200,200,110,0.82);font-size:11.0px;border-color:transparent;background:rgba(0,0,0,0.59);">Rare sword</span></td><td>Rare weapons and quivers during the campaign; other rare weapons, shields, quivers and armour in tier 1 to 10 maps.</td></tr><tr><td><span class="lf" style="color:rgb(30,20,0);font-size:16.0px;border-color:rgb(255,245,200);background:rgba(235,200,110,1.00);">Exalted Orb</span><span class="lfx">sound · beam · map icon</span></td><td>Exalted Orb, Orb of Annulment, Ancient Orb, Stacked Deck.</td></tr><tr><td><span class="lf" style="color:rgb(235,200,110);font-size:14.7px;border-color:rgb(235,200,110);background:rgba(45,32,10,0.96);">Chromatic Orb</span><span class="lfx">map icon</span></td><td>Chaos, Alchemy, Vaal, Fusing, Jeweller&#x27;s, Chromatic and the other orbs you spend daily.</td></tr><tr><td><span class="lf" style="color:rgb(200,180,130);font-size:13.3px;border-color:rgb(120,100,60);background:rgba(25,20,10,0.90);">Orb of Transmutation</span></td><td>All other stackable currency.</td></tr><tr><td><span class="lf" style="color:rgba(170,158,130,0.86);font-size:11.3px;border-color:transparent;background:rgba(15,15,10,0.71);">Scroll of Wisdom</span></td><td>Scrolls, Transmutation, Augmentation, Scraps and Whetstones in maps.</td></tr><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:16.0px;border-color:rgb(230,70,70);background:rgba(75,12,12,0.98);">Map (Tier 14)</span><span class="lfx">sound · beam · map icon</span></td><td>Maps of tier 11 and up.</td></tr><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:14.7px;border-color:rgb(230,200,60);background:rgba(55,48,6,0.96);">Map (Tier 8)</span><span class="lfx">map icon</span></td><td>Maps of tier 6 to 10.</td></tr><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:14.0px;border-color:rgb(210,210,210);background:rgba(35,35,35,0.94);">Map (Tier 2)</span><span class="lfx">map icon</span></td><td>Maps of tier 1 to 5.</td></tr><tr><td><span class="lf" style="color:rgb(205,215,255);font-size:14.7px;border-color:rgb(110,130,255);background:rgba(20,26,75,0.96);">Breach Thread</span><span class="lfx">map icon</span></td><td>Map fragments, including the Threads that replaced scarabs in 3.30; league items: contracts, blueprints, Viscera from the Covens of Umbra bosses and similar.</td></tr><tr><td><span class="lf" style="color:rgb(0,40,70);font-size:14.7px;border-color:rgb(230,245,255);background:rgba(160,215,240,1.00);">Divination card</span><span class="lfx">map icon</span></td><td>Divination cards.</td></tr><tr><td><span class="lf" style="color:rgb(74,230,58);font-size:15.3px;border-color:rgb(74,230,58);background:rgba(10,35,8,0.96);">Quest item</span><span class="lfx">beam · map icon</span></td><td>Quest and Labyrinth items.</td></tr><tr><td><span class="lf" style="color:rgb(255,255,255);font-size:16.0px;border-color:rgb(27,162,155);background:rgba(10,75,72,0.98);">Awakened Melee Physical Damage Support</span><span class="lfx">sound · beam · map icon</span></td><td>Awakened gems, Enlighten, Empower, Enhance.</td></tr><tr><td><span class="lf" style="color:rgb(27,200,190);font-size:14.7px;border-color:rgb(27,162,155);background:rgba(6,35,34,0.94);">Earthshatter of Prominence</span><span class="lfx">map icon</span></td><td>Transfigured gems; gems with 14% quality or more.</td></tr><tr><td><span class="lf" style="color:rgb(27,162,155);font-size:13.3px;border-color:rgb(20,100,96);background:rgba(5,22,21,0.88);">Sunder</span></td><td>Any gem during the campaign.</td></tr><tr><td><span class="lf" style="color:rgba(27,162,155,0.78);font-size:11.0px;border-color:transparent;background:rgba(0,0,0,0.59);">Sunder</span></td><td>Plain gems in maps.</td></tr><tr><td><span class="lf" style="color:rgb(190,230,190);font-size:13.0px;border-color:rgb(70,140,85);background:rgba(10,30,15,0.88);">Granite Flask</span></td><td>Other tinctures during the campaign; small to Greater Life Flasks in Act 1 and 2; mana flasks in Acts 1 to 4; other utility flasks during the campaign.</td></tr><tr><td><span class="lf" style="color:rgb(220,220,220);font-size:13.0px;border-color:rgb(150,150,150);background:rgba(30,30,30,0.88);">Six-socket item</span></td><td>Six sockets; linked red, green and blue sockets during the campaign; the same in maps, on items two squares high or less.</td></tr><tr><td><span class="lf" style="color:rgb(220,220,220);font-size:13.0px;border-color:rgb(110,110,110);background:rgba(18,18,18,0.86);">Leather Cap</span></td><td>Other normal and magic jewellery during the campaign; one-handed weapons with three sockets in Acts 2 and 3; bows and quivers in Act 1; normal and magic armour in Act 1.</td></tr><tr><td><span class="lf" style="color:rgba(136,136,255,0.86);font-size:11.3px;border-color:transparent;background:rgba(0,0,0,0.63);">Magic gloves</span></td><td>Magic armour up to Act 3.</td></tr></tbody></table></div>
+  </div>
+
+  <div class="sub">
+    <h3>What it hides, and from when</h3>
+    <p>There is no rule at the end that hides "everything else". An item that no block matches is shown the way the game shows it with no filter at all. That covers anything 3.30 added that this filter does not name. Uniques, currency, maps, fragments, divination cards, gems and jewels are never hidden.</p>
+    <div class="scroll"><table><thead><tr><th style="width:17%">From</th><th style="width:33%">Hidden</th><th>Why, and what is still shown</th></tr></thead><tbody><tr><td>Always</td><td>Sanctified and Eternal Life Flasks</td><td>The guide skips them: they heal faster but hold less, and the bottle scales with the amount.</td></tr><tr><td>As you outgrow them</td><td>Life flasks one size behind (8 steps, table below) and mana flasks two sizes behind</td><td>Vendors sell the current size anyway.</td></tr><tr><td>Area level 14 (Act 2)</td><td>Normal and magic weapons, quivers, armour and shields; hybrid flasks</td><td>The bottle needs an empty main hand and only drinks from life flasks. Still shown for the whole campaign: four-links, linked red-green-blue, six sockets. Still shown to area level 32 (the end of Act 3): three linked greens, magic armour in small print, and one-handed weapons with three sockets for the second weapon set.</td></tr><tr><td>Area level 41 (Act 5)</td><td>Mana flasks</td><td>Essence Sap pays for the bottles by then, and a Jade Flask has the slot.</td></tr><tr><td>Maps (area level 68)</td><td>Normal and magic weapons, quivers, armour, shields, rings, amulets and belts; utility flasks and tinctures the belt has no slot for</td><td>Still shown: the guide bases at item level 84 or more, jewellery bases that only drop on tiered items, six sockets, small red-green-blue items.</td></tr><tr><td>Tier 11 maps (area level 78)</td><td>Rare weapons, shields, quivers and armour that is not armour and evasion; all life flasks</td><td>By now the gear type is settled and the belt has no life flask. Still shown: every rare ring, amulet, belt and jewel, every armour and evasion rare, and any unidentified rare of item tier 3 or more.</td></tr></tbody></table></div>
+    <p>Rares for the chaos recipe are item level 60 to 74. They drop in the last acts and in tier 1 to 7 maps, where no rare is hidden (off-build rares are shown in small print), so the recipe still works with this filter.</p>
+  </div>
+
+  <div class="sub">
+    <h3>The life flask ladder</h3>
+    <div class="split"><div><div class="scroll"><table class="fit"><thead><tr><th>Flask</th><th class="num">Usable from level</th><th class="num">Shown in areas</th><th>Marker</th></tr></thead><tbody><tr><td>Small Life Flask</td><td class="num">1</td><td class="num">1–9</td><td>plain flask marker</td></tr><tr><td>Medium Life Flask</td><td class="num">3</td><td class="num">3–9</td><td>plain flask marker</td></tr><tr><td>Large Life Flask</td><td class="num">6</td><td class="num">6–15</td><td>plain flask marker</td></tr><tr><td>Greater Life Flask</td><td class="num">12</td><td class="num">12–21</td><td>plain flask marker</td></tr><tr><td>Grand Life Flask</td><td class="num">18</td><td class="num">18–27</td><td>pink</td></tr><tr><td>Giant Life Flask</td><td class="num">24</td><td class="num">24–33</td><td>pink</td></tr><tr><td>Colossal Life Flask</td><td class="num">30</td><td class="num">30–39</td><td>pink</td></tr><tr><td>Sacred Life Flask</td><td class="num">36</td><td class="num">36–45</td><td>pink</td></tr><tr><td>Hallowed Life Flask</td><td class="num">42</td><td class="num">42–63</td><td>pink</td></tr><tr><td>Sanctified Life Flask</td><td class="num">50</td><td class="num">never</td><td>hidden: the guide skips it</td></tr><tr><td>Divine Life Flask</td><td class="num">60</td><td class="num">60–77</td><td>pink</td></tr><tr><td>Eternal Life Flask</td><td class="num">65</td><td class="num">never</td><td>hidden: the guide skips it</td></tr></tbody></table></div></div><div class="notes">
+    <p>Poisonous Concoction adds a share of your life flask's recovery as chaos damage, so the size of the flask is a damage stat. The filter marks the sizes the leveling route uses and drops each one a few levels after the next becomes usable.</p>
+    <p>"Shown in areas" is read back from the finished file by running every flask through it at every area level, not typed in by hand.</p>
+    <p>From tier 11 maps no life flask is shown at all: by Stage 2 the belt has none. If you keep one while you learn a fight, hold Alt or buy it from a vendor.</p>
+    </div></div>
+  </div>
+
+  <div class="sub">
+    <h3>What was checked, and what was not</h3>
+    <ul>
+      <li><b>Names.</b> The game rejects a whole filter over one unknown item name. All 53 class names and 107 base type names in the file, plus the 5 partial names (&quot;Awakened&quot;, &quot;Cluster Jewel&quot;, &quot;Empower&quot;, &quot;Enhance&quot;, &quot;Enlighten&quot;), were found in the lists of NeverSink's filter as updated for 3.30 on launch day. I used that filter as a name list only; no rule or colour is taken from it.</li>
+      <li><b>Syntax.</b> Every line was checked against GGG's item-filter page: known keyword, right kind of value, numbers in range. The item-tier and Fated keywords come from GGG's 3.30 filter post.</li>
+      <li><b>Behaviour.</b> I wrote a small interpreter of the filter language and ran 119 hand-picked items through the file, each with the result the guide needs. All 119 match. Every block in the file is reached by at least one test item.</li>
+      <li><b>The build's own gear.</b> All 89 items from the seven import codes, dropped at the area level of their checkpoint, come out visible and marked.</li>
+      <li><b>Sweep.</b> Every equipment base in Path of Building's data, at each rarity and 19 area levels: 46,562 combinations. No unique is hidden anywhere, no rare is hidden below tier 11 maps, no rare armour and evasion piece or rare jewellery is hidden at all.</li>
+      <li><b>Not checked.</b> The game's own loader, as said above. The interpreter is my reading of GGG's documentation, so a rule could behave differently in play; the socket-colour rules for the green links are the likeliest place. I have not heard the alert sounds. I do not know what the Fated flag marks, how common tier 4 and 5 items are, or what Viscera sells for.</li>
+      <li><b>Not a farming filter.</b> It knows what this character wears, not what things sell for. When you start farming for profit, switch to a general filter that is updated with prices each league.</li>
+    </ul>
+  </div>
+</section>
+
 <section id="pob">
-  <h2><span class="secno">11</span>Path of Building codes</h2>
+  <h2><span class="secno">12</span>Path of Building codes</h2>
   <p>In Path of Building choose Import/Export Build, then Import from website or code, paste, and import. Each code opens with the boss skill selected and the configuration I used. The three campaign codes for the leveling route are in <a href="#leveling">Leveling</a>.</p>
   <div class="codes"><div class="codebox"><div class="top"><b>Stage 1 · Fresh maps · Lv 70</b><span class="dim">0.61M burst here · 0.61M in an unpatched PoB</span></div>
 <textarea readonly id="code-s1" aria-label="Stage 1 import code">eNrlXelz20ay_7z8K1Cqeq-SCiXhJEA_ebeoW45kyZJ85YsKIocibBCgAVASs7X_-_56BicJQOARO8mLUxA4090z3T3T09NzYO9fz2NXemRB6Pje6y1lR96SmNf3B4738Hrr_e3xtrX1r3-29q7saHQ53J86LuX8s_WPPf4u2WGfeYMD1w7Dt_aYvd4iwKHjDViwJd3b3sCJXm-99T22JfVHdmD3Ixacs0fm9qaRf-EPgDG03ZCyMxrXtvdA-C4Bvt4yUaex7Xg3fv8ri04CfzpBTbekie1FI-Z7F_YXPzjxB0lBabrjFdIjO3hg0YeEV-0OdB8d9iSqcXt9dLQFxv6xd-XaMxbcRHYkhXi83upBPvYDO7THeALHdqdAUNSObCrdHd3sKlZX39qtRd6fBmG0GoWbCWODFEne0S3NNKqArwJ2NByyfuQ8soPAiQ5GttfPFSnvdKtQVwC_mLqRM3Ed0laMou1UV-60pAC5CvjWj2z38Oomhe3IXcvUdmTdkg3T6tTj-VEmsSrIj0402nch3BVKIdyzB8-J2IrIV74T-t4a_OVRK1k8mLouOmwj2GsWsuDRjpxitapp--N7x1tJer2A2ZdD0VCv7YEzDS9YFLAwpaNWYV7Ynn3gh5l2tU4d6BULYKCiAob8AsIN6_uwaXkUxdzRFaNBQeXolSWeO0PWHHIpZmKEZWuzGh9HN03hlia8WoWuYWebQd74U7chZJRZOdWyqrvRtzykYlW25UP2nBGsbscgmIdUZK0K8szLNVmlroZ5yG6nuoKPPpmDl2XDjdLR6VXGj9ztdHZ0rWvqHVmuFMHVaBY6fdu9sJ-d8XSMAeLW_sqyAjvd6tqdOw-jyIN1q0JWLEVRqrCPnYBVIaqGWj2IHfjuoLLEbkettpcj2w8rMRXTrDF6jncKZ6rX70_hQ81ydqnbrevNmZXUukqNf9F_RdBnXj9FsJQ6uu-9gA8WOb-krgRCuUbvJVfo3mWNcbJiYivQxG8QhT0wLy4xJy2rs6PWoZ0z1h-dQNjXdpSrpWrtyGZXrbX_KbShaLWCJuC8oGtHoxI5K7reDGNeZJwLWTENXbOMbu2oWS6-bh1Kuej07k5Hq-lLRx4LHmY3I4e5gwaDQQ46qd2BPWlguUnweexGCigWVyaRRqjlkql2Su1g0Gx8yxpoLdiyVX-0w0YmXwhVQOflWeMnMTjbwBiwuVmAXD2b8b_QXMZdDq0XjP1pNgQbenUL5FwI-DwT2osjlpjLXbPBtF8YIqud3nRetu9iJtuUlxQLNXXdpVB7UWT3vx76g4fGkuOFLIVRrN_NdDKBAaI2MUfAqhuIMfVwci6Yab4MfInmnO_83brxep5-52Xgefrqi27IfCF6Q4z5kuodiLlSOlYD6MYlpMq8gLUYY_TgsQcESLLevWNVSvoYk80VJoMcrXw-G1O8-eq4rhTS88oORDMII-mj_cgkmkpuSSH6bx-IW0k7nooQ1HI1ufKfIKgRxYnCBsYpBw23LrMdlYwGzPt91ph-AbxRAUfeAP4het18GUZTjHwxlUg93kTg8rPxuTN2cl5ZjHHrjGHqw_DQjmxpEE8iPtiBg8icwmN3c4kqTwyZHfRH52iwXJHpr2Pbde9hyZBK9Pd2eeyR3g5stx_yIs-8yTSSPB4_HDth_-5-OhxSZI9aRMCjmUfHx0cHt2cfjuJa5lF427rzpuN7ajXib8bPDeM2Xur7rmtPQjZIo5YOXnnrvAHDfUginN6HAvr11gcEF3nmIYtsxw0bUcPMIAkT5mlxOlleE0rwJPqBQ60gT-jomQUR5JHmNiF1hcDtPJ3xhNo_G3C734wMj8otcCVYIveE2k0zkYuQaJ6UGOwO7DDiflYTKhTBLBKhlGasnI0ntjunozitcZu5nU0YdauwRCgR8kL4Js7Q6QuYho0nGXYLsknmjU1o8IhoEV8kNWooPKpZxI7TGkmVR1TnpCrSGrUv1rdnRWyR1AQ59dOLBNJk34N0G1E6clnPcWn4nNMs1iF4Y0f3SwGaELyAQRND8xzBSyx0BElOE0roJYFzP43mrUIuvZGseGyhICZKacQLnyznUXlKI7kWZosFY5TPaWgb50jwlCaoiQOWRxZpDVUQT04K4hdpjYSQzM8K_MeJjToJN7e9R98ZLFqK-cy1CfIJywbqRVOS9cnMz1EaUTzGyuTXuf4Sp1WiR8G0Bvs9ZrRONFuPCPW49ShQx1uPwq3j9aNpwBoRuF5waq5rXZkMM3VnC2N1nLgqfur6rkxBOOgro_P5Q2P7f8iGWJhnZQNAmrUerWMfjiHcDb4CuCatm2jqHUK89aQyAb3AYQOD1JyWGHmXEpowKnHEftFeioz1CcEvOG3qgFZSSufwp8x2aZ3Zd9cjOL9k0UAFlbQoDjnFBo1BQu1yGbe_Wnp-FIIonxceUrwzXKuWcCfGsxydvd1korl34HtD50GyxQYL_uOGRTRV5OWlKbwAkZjMNO-hCWZ7SQ3ExJOWNB0qlaYekA5aphublGZ4vK5YzsNEfICJz2AZ3NPViuQuMdpqEWcOiCYt-GNTzHluPt2slPfQFp-kzlap4_sQFeRD1tJYyaBWxh7j0g73_TDMAgv8VwnwON0dI4a-RAxJvL4KmraH8Jk1n9H6U1rESUUoN-BnGrKFUFCMhWBOn40Q5WRBDHzT9xFn4WWFJaoqQRjBpVsC3qZ5bHQ5PJ-iNTgh_4PAfsTiwHlCwlqOhPC5hY-3BIkb3yUSCBCGiOIP5vkwqin0Rd8mMoHt3jrYozannBpk3nAS1z8Vmi7r5gs4PIybRIQSRFU1mqAlU5UU7UUspMyXZXS0BljzRenyS0i53WZN5Uc489XTXiooXqjBAMD3FWaY5kuY6VQrrZ9sKS_g0ALF8hLMr4E0lmC6jLB8eQtrFo0LLS5_LVNmHLPLpF9TFIWP2eFC91ZqGkhmPvmIeIqYsf8kxoAxa2SnMgpFZGEirtkYIcrB_qznurMl6S0adISLh834mqRLoIvyqNNW6Dw47uWQTzJQLp99LFT6YBpG_hhhcvj9LOBzdWz_pT0aqaMUOZHLKI42tMGPcGj-wZF3S7C5E7SbekHCd-K_6BUBUswxJPZMf2glZ5a4d9zLOsOCQhi7VvQeO1ZSOPKfyJ04dODaBtxrT2qHkU5sC_vI7AmcDsLwHFc4Y0Qj74ddw_BHs1fSde_6qHVgBwF5hjcjhARaJ2iiMOr_CyLh_4XSfuA80OZlj7WEzX4lmZYSv-_bYbJNDlp5JSmt2FAIoPjHItS7qe3y8lW5JfYyh6-kk-30X4tvjMbmrFdSp9OCrFyn7xCM3PrFtKTIxy5o7olLNPVv6fL_SPBUsPwFR0kSVZNQaSmuQOsXggAWGRcpGy3TdDLb-XTSKZTJrWQsNimgH7TpOG2hBQj1RQjtRQh9EWJvl1RX1KFao8ODwH_yWm_JqI1tMAvZ96G7KFWepugvK0835NWUl1ecOac4YxXFaSpXUGqlC9pTLJkyk5i-hOUOgPzJtafVaO8kcCatQ2yS97lLxqQTGxbShYRT_SmQ64v6I6Dvob_eYBBKBiV3pWQ4lMR4yBXDF6LC6u73l1SgXqPAWzTlQev2yd--xUGLgbTvYzou_SQUthur5OdMmWaDzkhA6yrTlPPKVCB5NdMIdbg5CxiWqlstdNdkY4TE3ZkXuqoqMrkv_ue0tHMQRrPGYNTZYj8YQAc2eTzSPnOjnEKsOX1oxoK0f-ksaqBqwFKsvGb4ZF-Kp7vSg01HE_6-KujUqODc9yet3phFME6RdE3GJdOBNt8pVLlcQr_o2sZNX21v0bhZRCgLDhkm1381Lc1BdJrp0azR4z5s1J9Cj_Md7-9v9VZTplVnF2GYxq1Lb_Ys9TAzZHm7qC4MVDpJELNQKVuYr1Ykt5iKUavJKqWU9bo_v4fyRymwW1Tg-7dn794ftS7swB850lHwzWn9agdTR7rAXLjcC7neTv_lFGwU3EqtpRv5kYsWy6RktUzC_xTBwNas1r95nV_JO9p_fjJkeRsnaX7OI84pvKWCbEA7kmlewTUfuyl5Qrq8bRTJNCp_EY12Xkr-UBILTi1k_xGtRttAq9FebDXaOq0GMflCs7nonZwdZIZbOCYQFFwimu7hvCPCS4Xmk7UUxSpOQDplk0WE9snoCsJMiL9J1yutvFJW-UPHHiOqslzdVfN7110tqzvmCiHqxIu5tL_e0zLISEpWdSrq3pkzwbTjS9IkWrihHsGPLkgiyCRh2ayl6llXo30UEg54e6h0tKlxrpRfrYzfG4aGRsweOo9wevnAkCnuBqvA1A2bsA2VdXIWZEyRSik-OgIrcubRoJGmzFonqDRmemfj8RR79GbU-_lWQarM0A8wicMuXorOhZIzpFjdQHoaYQ6XQpVRwAQimE4imke6vj-oJ2TzBoSf97N5xD_5hFrRS42G2x_B9oZREol8N3Uwfjsu5F3sjAcjqN0eVehVL6pVLYw3ca_TtEzXifVv0RS5ara7ct_9w2RYNhFFOGmMqC6286EbY8VojM2n0hv2xNyiTMw8o8X5pmIIZwlU-fCK87zOVyZltx1IT4joS4h4SHQskwSVsw_hH2kBOvUcq38_js16jrW_H8dWPcf634_jbj3Hxt-J42xzUO3qFfYuuT4ggXHGZyb89er-_fU5nY4Ri3yxQ5Ku5xVQ5FoU6eYJJ8JWxJN697MwJInyec_qFZgnpG6KkLYpQvqmCBmbItRZhdAmFLYJXW1CTZvQ0CaUs75eVhChumLHVTfVcdVNdVx1Ux1X3VTHVTfVcdVNdVx1IwrbhK42oaZNaGgTymmkF7WUxinD7vFoiUIFwjpqLKegrk1BW5uCvjYFY20K5cpTSins-4OZlD9r1ajcHNY6aqwho26GjLYZMvpmyBibIVOuX62UzImLeEW4RLkCYR2tllNQ16agrU1BX5uCsTaFcuXpFW3Aj8Kl2gztMlmrQ5YQUNcloK1LQF-XgLEugXKtWaUExFpmKUKnFIGWsSvUZFYjLKMWjlCuBqNcCNilsozMAL5WuyvBV9fE19bE19fEN9bEX8Y1xprBcEkjzTHKZayUo4gYd3khilKDUixFbGZOD50lBNQaAuWqVLQaFL1JmXoNgUx9XB1nA8CUQfPwm6R2TJwkkTzcrsIdZf5zKQIW3ciVEbDSC7oaEtC0jqZkBMTPZQgYuqKaGQHxcxkCuLlZy7EgfubCfcnmd76nnd7e4sATv6oGR5-GNpbpehMf6zh9HJCTtiW-Q19S2tIQh6lHCGNOsIGS33-NXYw_70i3p0eX158PrnvHt0eHbQnrciyklS4sUj6gVjsSXREpbkji2-Wxg5IWiUbMfpxJ4jIkydjGQuDXnWRnAE4MImQZSl_ZBG3mHsM39mthuRrrSzh2l6w_4b4nk3bTRVhri6QHBGxFrRSrjUuXJFpnnUkhjkkQKRxGo1rtSGLL_yu6L8gbUAQXDCE3DNuSIkvJcQgw648RoCURtXNLtVG8VEsLrz9hfwotwkIG6YI6bd1MFqiH_FS6RLu-7-0It4tj3wJfMrzATTBgmg5NQChM7LAmMC4eKUTkF0ttA7A7lH7y0G0GwdT7imKu_H1pQBcXUR2JK21H7b5apEd0Qi5l2h1FQOIapJC047icznRCZzJDCkJrO5q8Qy0iaQh7_AAEItz-U2_wSJtxbnGWL0wPvNqTCa5WT38OoHDHs-P7IlxxpneP3xWTnJmILyKK4huW-IGNE9zRJK5Rx2Xo4_Si1Xx-vIIoQs-crXP2gA0cyMpqw89g4OIEHNxAOt1cg7ze-TldvcWTwv0ZbupKrE4h8Ziu5SjeFy0O58b1LZyVFXd9zR1CQYNwp-hpXnwhWJLu2vfE2ilv5tQKXxUbu_RTbu_Oz-Ia-V4mKy6ouTR-0lccO4ExzYXYxcmXPXCF08RQMYcR9YTze2-7SlKrfKJaTEw5ehBWGdde29TYhJ3YJZHt8mrgLbnDLL4GH8tC3ALRAcTsgrNvifIwjPHuT1STzNyNaUruV8bio7h-K4ez-_3YTFsTmZ3LIYxOBa85s1TJMKdFgL4gVOBsLvNH8Hg1pSV8h7pSKY-5_DoOc2CLHGaZP4JDvnQ2fzywlFexyDa3ea2e71LiixIoA_sRsrieRiO6AK9CAFl2Hc8Z1CKjaV7sswijsZQFjQ17bEKvyCXo4yh5kJpQPTah9xScsXlwZikTKoYTbkTzgbe_vB39kxhN7o8IX67KbgqXJd4D_ILpzJErbXFFgB_B8Vmyyp__ekTGupxn_axil2q9ECpKWBRGAdBPAP__jJ3r2xv6_s8Y3mwfp4FxIeWKdiUO-H53k4KauLc-DFrOwpt5sRN7nDF-f0Cp3IsgOZkXMna_O2_pXTIIox3Q7S2l7SoPJXGwUiYXiOX4nM_bVNPiV5_E1ZJ-GtseKvbzX6yBJTxUKyDPZYXwC0Rygs-n_wib9R4n9LzoMsDQWdV_BIiUwNQZriK1RdtVyN9UGxMhjDh2sbJTRAseP0D-_BZEfn1zhfQ5gBRD1Mk-T2lR8rnc72_GhIYq3IMks5S3JDPHUJz0Q6ZVtFlxTllGYTYldjMyoa8XOksCnMCWTKGKEJvqMLST_C_ST-IGdBwgmHlPU6CKRpQHKJV5HiAn6Fzy5rypwF7VDMU7Wr67fPGlwr4j7leKxVsMiGTZpcLN5edkm6V-f4vzlj31Aki6n1zzVe4ZcpBkMlzhGhbI5F3DfMb355Cfq-l5gxvE0lP2OnnuxJEdCrULmFL2imRy7BUyNtU3Tqb8rue_UNwitf10m_2lV7imskzoBIbzUMxLDv7GsHUDAeF8BEqB-OJoUAb2_dvdTcSYCw4y_rsFdyXLLmWZn6GKm0GOxVzyQluLX5NVPLHMQq-464Qlyy288PjiT_qR_xpuvEmpn7yr9D6lEMqpHY6OaS0m-xStSk2R8mbxXe6vt_6tK1q3rZsdXf1P-98dzdLbqqp36b2rqG3VlLsGfmiGqiptwzS6JmXputxpm4pm_kcsTYKQrhOmarQFQUvT2oZiqG1D1cx2R9asdgerp21eAvA7bU7fwmFePIDbVUFSkakYRe508FTw-bA2ri40kI6vYuKJe_HoiaS2AkIynoSKC3lkrY2v8NGzaxlWW5UNQ2nzbwNSpcTTMvAkSFWXLXoqBlLwlTJ67yqoPi0wg2WUiacmgwKtGLfVbhc8aDKVqMkds9vWFJneVXxND08DdDQUorY1fMMNKbRM3NYgJMDoXVNrC_FpJqDwNGS9DVoq0i1Nt_AEY22tawEGgtUNehoanpZCz65sQqoWuNA1zdTbELUKEXewltxGxU0LTywstw1Z6Zp4khZQhkopOmRIYsO7ooAjQ9FVGUrpog6GBhnjaXahK1qZpqcOSKOjA8vAlwKhcpKeYemU0kU5eFrgy-h2VaiUlqPx7AKro0D2eKodeoec2vhGIeTTUYXeZdAn7eNdx_cS26IRdXRLwdOQwW_HUBUZT8htKz6HiVXrXrGxIwtfcGW5zyur8amePSyfC5MxiqJJ-Gp39-npaWeCG2L8IXvGKc6dvj_enYAOOtU277XbRGq3h__2H84OPz-dWAfnR-9-fT4fHR_03uOyyY8nb8PP1v7X6clTb_T24Pjh7O6zZ96M3XP3Qu0cDi4up7p1fntnvft1f_9KtrXb3968u1ZOxx8eJ58OPziPn0Zv2UfFuvv84Y3_20f_yP724fFSu30efHvWFM31h58-3P2qbX98wHefP-m_PThv1Dfub6eXX_2D9yPj04U7nt1_-c089kJ1eP_b3bmvf5vcf1PfRgd3vZPw6Oh5_9PRRf9Wff5mnnr9L_3fv325GkZnI1m9ux1G7kgd_D4Mp9fXnZP7yfjS_2ze3k0Pp9alKZuP7PHNvmU8qhd37pdt4757caUP7oLgjvV6x9OR_-7Xpy9vTq72J8pz2NOvUK_rx9G28fm1sGGJtON9DGFsreONNul2kIoNHIuAnfKNGouAZvmGjEVAq3zjxSJgt3SDBdnjHGt7dIV04MDYxdsvyBRzq022OrHZ9C2e-JNCOAXGvy9Ufavg776frJpr4tcn3sDp7XP8xaa93flvov8X1wmSPA==</textarea>
@@ -822,16 +1709,16 @@ a.ghost:hover { border-color: var(--muted); background: rgba(255,255,255,.04); c
 </section>
 
 <section id="risks">
-  <h2><span class="secno">12</span>Unknowns and risks</h2>
+  <h2><span class="secno">13</span>Unknowns and risks</h2>
   <p>Everything above is arithmetic on game data. These are the places where the arithmetic leans on something I could not check, with what it costs if I am wrong and how you would notice.</p>
   <div class="scroll"><table class="risk"><thead><tr><th style="width:28%">Assumption</th><th style="width:40%">If it is wrong</th><th>How you would notice</th></tr></thead><tbody><tr><td>Fist of War boosts every slam when the swing is 1.85 s</td><td>The rule itself is clear. The 0.05 s of slack for server timing is my guess.</td><td>The ancestor appears on every second slam. Remove a little attack speed.</td></tr><tr><td>The spike keeps the boost, the exert and the flask bonuses of the slam that made it</td><td>The spike is 70% of a slam. If it kept none of them, damage would roughly halve.</td><td>Compare a spike detonation against a dummy with and without Intimidating Cry.</td></tr><tr><td>Automatic warcries and the guard do not drain Master Distiller charges</td><td>If they do, the batteries lose about 0.7 charges a second more. Tick the box in the calculator to see it.</td><td>Watch the Amethyst flask while standing still with Autoexertion running.</td></tr><tr><td>Master Distiller grants its bonus without the flask being drunk</td><td>Path of Building models it this way and the wording supports it. If a drink were required, the engine would not work.</td><td>Stage 1 answers this in the first minute.</td></tr><tr><td>Profane Ground stays under the boss</td><td>Bosses move, fly and phase. Without it you deal 71%.</td><td>The sustained figure already assumes it is missing a tenth of the time.</td></tr><tr><td>Tincture uptime near 65%</td><td>My mana model, not a measurement. At zero uptime you deal 73%.</td><td>Time it on a boss.</td></tr><tr><td>Twelve Withered stacks</td><td>Totems live eight seconds and can die. At six stacks you deal 76%.</td><td>Count the stacks on the boss bar.</td></tr><tr><td>30 Rage</td><td>It takes about fifteen seconds of slams to build. With none you deal 77%.</td><td>The sustained figure includes the ramp.</td></tr><tr><td>3.30 values</td><td>Master Distiller numbers come from the 3.30 patch notes; everything else is 3.29 data. Other 3.30 changes could move things.</td><td>Re-import the codes once Path of Building updates.</td></tr><tr><td>Prices and supply</td><td>Marohi Erqi is a league-specific Legion unique, and Earthshatter of Prominence is a transfigured gem that comes out of the Labyrinth and is usually bought from another player. I have no day-one prices.</td><td>Check both prices before you commit to the swap.</td></tr><tr><td>Leveling damage numbers</td><td>Path of Building counts one bottle per throw and takes the flask share from the flask item alone. Overlapping bottles are not in the number, so real boss damage should be higher than the table, not lower.</td><td>Throw at a lone rare and count the hits.</td></tr><tr><td>Every defensive layer is up when the hit lands</td><td>The effective HP figures count the Sulphur flask, Sin's Rebirth, Steelskin and, from Stage 3, the boss standing on Profane Ground. With all of them down at once Stage 3 has 32.2k, not 46.0k.</td><td><a href="#defences">Defences</a> gives both sets of figures.</td></tr><tr><td>The league mechanic</td><td>I did not model Covens of Umbra content at all.</td><td>—</td></tr></tbody></table></div>
   <p>If I were playing this, I would build Stage 1, stand in front of a map boss, and check three things in the first hour: that every slam shows the ancestor, that the Amethyst flask loses charges without being drunk while damage clearly rises, and that a spike hits about 2.3 times as hard as the fissure.</p>
 </section>
 
 <section id="sources">
-  <h2><span class="secno">13</span>Sources</h2>
+  <h2><span class="secno">14</span>Sources</h2>
   <p>Mechanics were checked against these pages. The build, the trees, the example gear and all measurements are my own. Leveling a Pathfinder with Poisonous Concoction is an established route; the leveling tree, its order and its numbers are mine.</p>
-  <ol class="sources"><li><a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding">Path of Building Community (the calculator behind every number here)</a></li><li><a href="https://poedb.tw/Version_3.30.0">Content Update 3.30.0 patch notes, PoEDB</a></li><li><a href="https://poedb.tw/us/Master_Distiller">Master Distiller, PoEDB</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/3361837">Master Distiller and totems, official forum</a></li><li><a href="https://mobalytics.gg/poe/guides/pathfinder">Pathfinder ascendancy overview, Mobalytics</a></li><li><a href="https://www.poewiki.net/wiki/Fist_of_War_Support">Fist of War Support, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Cooldown">Cooldown, Path of Exile Wiki</a></li><li><a href="https://poewiki.net/wiki/Earthshatter">Earthshatter, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/us/Earthshatter_of_Prominence">Earthshatter of Prominence, PoEDB</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/3063554">Earthshatter and warcries, official forum</a></li><li><a href="https://poedb.tw/us/Unholy_Might">Unholy Might, PoEDB</a></li><li><a href="https://poedb.tw/us/Sins_Rebirth">Sin&#x27;s Rebirth, PoEDB</a></li><li><a href="https://poewiki.net/wiki/Marohi_Erqi">Marohi Erqi, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/us/Lycia_Bloodline">Lycia Bloodline, PoEDB</a></li><li><a href="https://www.poe-vault.com/guides/bloodline-ascendancy-guide">Bloodline Ascendancy Guide, PoE Vault</a></li><li><a href="https://www.poewiki.net/wiki/Tincture">Tincture, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/us/Rosethorn_Tincture">Rosethorn Tincture, PoEDB</a></li><li><a href="https://www.poewiki.net/wiki/Divine_Font">Divine Font, Path of Exile Wiki</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/3448047">Pulverise vendor availability, official forum</a></li><li><a href="https://pathofexile.fandom.com/wiki/File:Ground_Slam_skill_screenshot.jpg">Ground Slam vendor table, Path of Exile Wiki (Fandom)</a></li><li><a href="https://poewiki.net/wiki/Poisonous_Concoction">Poisonous Concoction, Path of Exile Wiki</a></li><li><a href="https://maxroll.gg/poe/build-guides/poisonous-concoction-pathfinder-league-starter-guide/leveling-poisonous-concoction">Leveling with Poisonous Concoction, Maxroll</a></li><li><a href="https://www.poewiki.net/wiki/Unbound_Ailments">Unbound Ailments Support vendor table, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Volley_Support">Volley Support quest and vendor table, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Chance_to_Poison_Support">Chance to Poison Support quest and vendor table, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Void_Manipulation_Support">Void Manipulation Support quest table, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/Despair">Despair quest reward by class, PoEDB</a></li><li><a href="https://www.poewiki.net/wiki/Cruelty_Support">Cruelty Support, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Cruelty">Cruelty buff strength, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/us/Arctic_Armour">Arctic Armour buff, PoEDB</a></li><li><a href="https://maxroll.gg/poe/resources/pantheon">Pantheon Explained, Maxroll</a></li><li><a href="https://sportskeeda.com/mmo/how-respec-path-exile">How to respec in Path of Exile, Sportskeeda</a></li><li><a href="https://primagames.com/tips/how-to-respec-passive-skills-using-gold-in-path-of-exile-3-25-settlers-of-kalguur">Respeccing passives with gold in 3.25, Prima Games</a></li></ol>
+  <ol class="sources"><li><a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding">Path of Building Community (the calculator behind every number here)</a></li><li><a href="https://poedb.tw/Version_3.30.0">Content Update 3.30.0 patch notes, PoEDB</a></li><li><a href="https://poedb.tw/us/Master_Distiller">Master Distiller, PoEDB</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/3361837">Master Distiller and totems, official forum</a></li><li><a href="https://mobalytics.gg/poe/guides/pathfinder">Pathfinder ascendancy overview, Mobalytics</a></li><li><a href="https://www.poewiki.net/wiki/Fist_of_War_Support">Fist of War Support, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Cooldown">Cooldown, Path of Exile Wiki</a></li><li><a href="https://poewiki.net/wiki/Earthshatter">Earthshatter, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/us/Earthshatter_of_Prominence">Earthshatter of Prominence, PoEDB</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/3063554">Earthshatter and warcries, official forum</a></li><li><a href="https://poedb.tw/us/Unholy_Might">Unholy Might, PoEDB</a></li><li><a href="https://poedb.tw/us/Sins_Rebirth">Sin&#x27;s Rebirth, PoEDB</a></li><li><a href="https://poewiki.net/wiki/Marohi_Erqi">Marohi Erqi, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/us/Lycia_Bloodline">Lycia Bloodline, PoEDB</a></li><li><a href="https://www.poe-vault.com/guides/bloodline-ascendancy-guide">Bloodline Ascendancy Guide, PoE Vault</a></li><li><a href="https://www.poewiki.net/wiki/Tincture">Tincture, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/us/Rosethorn_Tincture">Rosethorn Tincture, PoEDB</a></li><li><a href="https://www.poewiki.net/wiki/Divine_Font">Divine Font, Path of Exile Wiki</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/3448047">Pulverise vendor availability, official forum</a></li><li><a href="https://pathofexile.fandom.com/wiki/File:Ground_Slam_skill_screenshot.jpg">Ground Slam vendor table, Path of Exile Wiki (Fandom)</a></li><li><a href="https://poewiki.net/wiki/Poisonous_Concoction">Poisonous Concoction, Path of Exile Wiki</a></li><li><a href="https://maxroll.gg/poe/build-guides/poisonous-concoction-pathfinder-league-starter-guide/leveling-poisonous-concoction">Leveling with Poisonous Concoction, Maxroll</a></li><li><a href="https://www.poewiki.net/wiki/Unbound_Ailments">Unbound Ailments Support vendor table, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Volley_Support">Volley Support quest and vendor table, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Chance_to_Poison_Support">Chance to Poison Support quest and vendor table, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Void_Manipulation_Support">Void Manipulation Support quest table, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/Despair">Despair quest reward by class, PoEDB</a></li><li><a href="https://www.poewiki.net/wiki/Cruelty_Support">Cruelty Support, Path of Exile Wiki</a></li><li><a href="https://www.poewiki.net/wiki/Cruelty">Cruelty buff strength, Path of Exile Wiki</a></li><li><a href="https://poedb.tw/us/Arctic_Armour">Arctic Armour buff, PoEDB</a></li><li><a href="https://maxroll.gg/poe/resources/pantheon">Pantheon Explained, Maxroll</a></li><li><a href="https://sportskeeda.com/mmo/how-respec-path-exile">How to respec in Path of Exile, Sportskeeda</a></li><li><a href="https://primagames.com/tips/how-to-respec-passive-skills-using-gold-in-path-of-exile-3-25-settlers-of-kalguur">Respeccing passives with gold in 3.25, Prima Games</a></li><li><a href="https://www.pathofexile.com/item-filter/about">Item filter syntax, official site</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/4013923">Covens of Umbra item filter information, official forum</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/4013680">Content Update 3.30.0 patch notes, official forum</a></li><li><a href="https://github.com/NeverSinkDev/NeverSink-Filter">NeverSink&#x27;s filter, used as the list of current item names and for the install path</a></li><li><a href="https://www.pathofexile.com/forum/view-thread/3782936">Hidden items and the highlight key, official forum</a></li></ol>
 </section>
 <footer>Profane Apothecary, a theorycrafted Pathfinder for Path of Exile 3.30. Built and measured in Path of Building Community on 13 November 2026. Not affiliated with Grinding Gear Games.</footer>
 </main></div><div class="scrim" id="scrim" aria-hidden="true"></div><script>
@@ -919,7 +1806,7 @@ a.ghost:hover { border-color: var(--muted); background: rgba(255,255,255,.04); c
     btn.addEventListener('click', function () {
       var ta = document.getElementById(btn.getAttribute('data-copy'));
       var st = document.getElementById('st-' + btn.getAttribute('data-copy').replace('code-', ''));
-      function ok() { if (st) { st.textContent = 'Copied. Paste it into Path of Building.'; setTimeout(function () { st.textContent = ''; }, 4000); } }
+      function ok() { if (st) { st.textContent = btn.getAttribute('data-done') || 'Copied. Paste it into Path of Building.'; setTimeout(function () { st.textContent = ''; }, 4000); } }
       function manual() { try { ta.focus(); ta.select(); var done = document.execCommand && document.execCommand('copy'); if (done) { ok(); return; } } catch (e) {} if (st) st.textContent = 'Select the text above and copy it by hand.'; }
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(ta.value).then(ok, manual); } else { manual(); }
